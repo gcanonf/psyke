@@ -49,28 +49,26 @@ onMounted(() => {
   gsap.registerPlugin(ScrollTrigger)
 
   ctx = gsap.context(() => {
-    gsap.fromTo(
-      giant.value,
-      { y: '8vh', scale: 0.85, opacity: 0 },
-      {
-        y: '0vh', scale: 1, opacity: 1, ease: 'power1.out',
-        scrollTrigger: { trigger: wrapper.value, start: 'top 80%', end: 'bottom bottom', scrub: 1 },
-      },
-    )
-    gsap.fromTo(
-      [heading.value, links.value],
-      { y: 40, opacity: 0 },
-      {
-        y: 0, opacity: 1, stagger: 0.15, ease: 'power3.out',
-        scrollTrigger: { trigger: wrapper.value, start: 'top 45%', end: 'bottom bottom', scrub: 1 },
-      },
-    )
+    // `immediateRender: false` keeps the element at its natural (visible) state
+    // until the trigger actually scrolls into view, so content is never stuck
+    // at opacity:0 after SPA navigation.
+    gsap.from(giant.value, {
+      y: '8vh', scale: 0.85, opacity: 0, ease: 'power1.out', immediateRender: false,
+      scrollTrigger: { trigger: wrapper.value, start: 'top 80%', end: 'bottom bottom', scrub: 1 },
+    })
+    gsap.from([heading.value, links.value], {
+      y: 40, opacity: 0, stagger: 0.15, ease: 'power3.out', immediateRender: false,
+      scrollTrigger: { trigger: wrapper.value, start: 'top 45%', end: 'bottom bottom', scrub: 1 },
+    })
   }, wrapper.value)
 
   // Apply gentle magnetic pull to pills
   wrapper.value
     .querySelectorAll<HTMLElement>('[data-magnetic]')
     .forEach((el) => magnetCleanups.push(magnetize(el)))
+
+  // Recalculate trigger positions after the SPA route has rendered.
+  nextTick(() => ScrollTrigger.refresh())
 })
 
 onBeforeUnmount(() => {

@@ -11,10 +11,15 @@ services:
       context: .
       dockerfile: Dockerfile
     restart: unless-stopped
-    # Coolify reads this to know which container port to route to.
+    environment:
+      # Coolify magic var: binds the generated/assigned domain to this
+      # service on port 80 (Caddy). Coolify fills in the FQDN at deploy time.
+      - SERVICE_FQDN_WEB=/
+      - PORT=80
+    # Container port Traefik routes to.
     expose:
       - "80"
-    # Optional: lightweight health check
+    # Lightweight health check
     healthcheck:
       test: ["CMD", "wget", "-qO-", "http://127.0.0.1:80/"]
       interval: 30s
