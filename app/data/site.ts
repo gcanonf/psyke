@@ -31,12 +31,11 @@ export interface NavItem {
 
 export const nav: NavItem[] = [
   { label: 'Inicio', to: '/' },
-  { label: 'Acerca de', to: '/acerca' },
+  { label: 'Sobre mí', to: '/acerca' },
   { label: 'Psicoterapia', to: '/psicoterapia' },
   { label: 'EMDR', to: '/emdr' },
   { label: 'Cultura del Cuidado', to: '/cultura-del-cuidado' },
   { label: 'Psicoeducación', to: '/psicoeducacion' },
-  { label: 'Testimonios', to: '/#testimonios' },
 ]
 
 export interface Service {
@@ -134,27 +133,33 @@ export const emdrFor: string[] = [
 export const careWorkshops = [
   {
     title: 'Autoliderazgo',
-    text: 'Claridad, propósito y realización personal para liderar la propia vida.',
+    text: 'Desarrolla la habilidad de dirigirte a ti mismo con claridad y propósito, fortaleciendo la toma de decisiones, la resiliencia y la confianza personal.',
+    image: '/images/cultura/autoliderazgo.jpg',
   },
   {
     title: 'Comunicación y escucha activa',
-    text: 'Conexiones más profundas a través de la escucha empática y los mensajes claros.',
+    text: 'Herramientas prácticas para construir conexiones más profundas, con mensajes claros y una escucha empática en lo personal y lo profesional.',
+    image: '/images/cultura/comunicacion.jpg',
   },
   {
     title: 'Gestión del tiempo',
-    text: 'Estrategias para optimizar la productividad y gestionar prioridades.',
+    text: 'Estrategias para optimizar la productividad y equilibrar responsabilidades a través de la priorización y la eliminación de distracciones.',
+    image: '/images/cultura/tiempo.jpg',
   },
   {
     title: 'Resiliencia',
-    text: 'Regulación emocional y manejo de la frustración.',
+    text: 'Regulación emocional y manejo de la frustración a través de la inteligencia emocional y la toma de decisiones consciente.',
+    image: '/images/cultura/resiliencia.jpg',
   },
   {
     title: 'Negociación y gestión de conflictos',
-    text: 'Estrategias de colaboración Ganar-Ganar y mediación.',
+    text: 'Cultiva una mentalidad Ganar-Ganar y enfoques colaborativos para crear acuerdos mutuamente beneficiosos.',
+    image: '/images/cultura/negociacion.jpg',
   },
   {
     title: 'Equilibrio físico, mental y espiritual',
-    text: 'Actividad física, nutrición, meditación y manejo del estrés.',
+    text: 'Integra actividad física, nutrición, meditación y manejo del estrés para un bienestar integral.',
+    image: '/images/cultura/equilibrio.jpg',
   },
 ]
 
@@ -173,74 +178,28 @@ export interface Testimonial {
 }
 
 export const testimonials: Testimonial[] = [
-  // — Psicoterapia —
   {
     name: 'Noa',
-    role: 'Psicoterapia',
+    role: 'Proceso terapéutico',
     quote:
       'El espacio con Eva siempre ha sido un espacio donde me encuentro a mí, con todos mis defectos y mi potencia.',
   },
   {
     name: 'Nohemí',
-    role: 'Psicoterapia',
+    role: 'Proceso terapéutico',
     quote:
       'En este proceso terapéutico que camino contigo aprendo a habitarme con más conciencia, a entenderme desde un lugar más amoroso.',
   },
   {
-    name: 'Daniel',
-    role: 'Psicoterapia',
-    quote:
-      'Llegué sin saber poner en palabras lo que sentía. Hoy entiendo mis emociones y, por primera vez en años, me siento en calma.',
-  },
-  {
-    name: 'Carolina',
-    role: 'Psicoterapia',
-    quote:
-      'Encontré un lugar seguro para hablar sin miedo a ser juzgada. La escucha de Eva me ayudó a reconciliarme conmigo misma.',
-  },
-  // — EMDR —
-  {
     name: 'Evelin',
-    role: 'EMDR',
+    role: 'Proceso terapéutico',
     quote:
-      'Te conocí sin querer conocerte, arrastrando la certeza de que nada podría sembrar en mi tierra reseca. Hoy esa tierra florece.',
+      'Te conocí sin querer conocerte, arrastrando la certeza de que nada podría sembrar en mi tierra reseca.',
   },
   {
     name: 'Paola',
-    role: 'EMDR',
+    role: 'Proceso de recuperación',
     quote:
-      'La terapia con Eva ha sido fundamental en mi proceso de recuperación; estaba en un punto crítico de mi vida y volví a sostenerme.',
-  },
-  {
-    name: 'Andrés',
-    role: 'EMDR',
-    quote:
-      'Cargué durante años un recuerdo que me dolía en el cuerpo. Con EMDR aprendí que esa herida también podía sanar.',
-  },
-  // — Cultura del Cuidado —
-  {
-    name: 'Equipo de Talento Humano',
-    role: 'Cultura del Cuidado',
-    quote:
-      'Los talleres transformaron la forma en que nuestro equipo se comunica y se cuida. Volvimos a vernos como personas, no solo como cargos.',
-  },
-  {
-    name: 'Marcela',
-    role: 'Cultura del Cuidado',
-    quote:
-      'Salí de cada sesión con herramientas concretas para mi día a día. Aprendí a poner límites sin culpa y a liderarme con más claridad.',
-  },
-  // — Psicoeducación para la Vida —
-  {
-    name: 'Jorge',
-    role: 'Psicoeducación para la Vida',
-    quote:
-      'La conferencia nos habló de salud mental sin estigmas y con una calidez que pocas veces se siente. Me fui pensando distinto.',
-  },
-  {
-    name: 'Institución educativa',
-    role: 'Psicoeducación para la Vida',
-    quote:
-      'Eva conectó la teoría con la vida real de nuestros estudiantes. Un espacio de conocimiento y cuidado que dejó huella.',
+      'La terapia con Eva ha sido fundamental en mi proceso de recuperación; estaba en un punto crítico de mi vida.',
   },
 ]

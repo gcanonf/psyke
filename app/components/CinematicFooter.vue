@@ -91,8 +91,12 @@ function scrollToTop() {
       <div class="cf__aurora" aria-hidden="true" />
       <div class="cf__grid" aria-hidden="true" />
 
-      <!-- Giant background word -->
-      <div ref="giant" class="cf__giant" aria-hidden="true">{{ brand.name }}</div>
+      <!-- Giant background word — the logo mark stands in for the "Y" -->
+      <div ref="giant" class="cf__giant" aria-hidden="true">
+        <span class="cf__giant-text">PS</span>
+        <img src="/logo-mark.svg" alt="" class="cf__giant-logo" />
+        <span class="cf__giant-text">KE</span>
+      </div>
 
       <!-- Center content -->
       <div class="cf__center">
@@ -114,18 +118,18 @@ function scrollToTop() {
               Escríbeme por correo
             </a>
           </div>
+
+          <div class="cf__social">
+            <a :href="contact.social.instagram" target="_blank" rel="noopener" aria-label="Instagram"><SocialIcon name="instagram" /></a>
+            <a :href="contact.social.facebook" target="_blank" rel="noopener" aria-label="Facebook"><SocialIcon name="facebook" /></a>
+            <a :href="contact.social.linkedin" target="_blank" rel="noopener" aria-label="LinkedIn"><SocialIcon name="linkedin" /></a>
+          </div>
         </div>
       </div>
 
       <!-- Bottom bar -->
       <div class="cf__bottom">
         <div class="cf__copy">© {{ year }} {{ brand.legal }} · {{ brand.professional }}</div>
-
-        <div class="cf__social">
-          <a :href="contact.social.instagram" target="_blank" rel="noopener" aria-label="Instagram"><SocialIcon name="instagram" /></a>
-          <a :href="contact.social.facebook" target="_blank" rel="noopener" aria-label="Facebook"><SocialIcon name="facebook" /></a>
-          <a :href="contact.social.linkedin" target="_blank" rel="noopener" aria-label="LinkedIn"><SocialIcon name="linkedin" /></a>
-        </div>
 
         <button data-magnetic class="cf__top" aria-label="Volver arriba" @click="scrollToTop">
           <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -138,21 +142,17 @@ function scrollToTop() {
 </template>
 
 <style scoped>
-/* Curtain reveal: contents only visible within this box; footer fixed underneath */
+/* Normal flowing footer (always shows all content on every page length) */
 .cf-curtain {
   position: relative;
-  height: 100vh;
   width: 100%;
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
 }
 .cf {
-  position: fixed;
-  bottom: 0;
-  left: 0;
+  position: relative;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  height: 100vh;
+  justify-content: flex-start;
+  min-height: 92vh;
   width: 100%;
   overflow: hidden;
   background: var(--color-ink);
@@ -193,26 +193,40 @@ function scrollToTop() {
 }
 
 /* Giant word */
+/* Giant background word — logo mark replaces the "Y" */
 .cf__giant {
   position: absolute;
-  bottom: -4vh; left: 50%;
-  transform: translateX(-50%);
-  z-index: 0; pointer-events: none; user-select: none; white-space: nowrap;
+  bottom: 0; left: 0; right: 0;
+  z-index: 0; pointer-events: none; user-select: none;
+  display: flex; align-items: center; justify-content: center; gap: 0.02em;
+  font-size: 26vw;
+  line-height: 0.9;
+}
+.cf__giant-text {
   font-family: var(--font-display);
-  font-size: 26vw; line-height: 0.75; font-weight: 700; letter-spacing: -0.04em;
+  font-weight: 700; letter-spacing: -0.04em;
   color: transparent;
   -webkit-text-stroke: 1px rgba(255,255,255,0.06);
   background: linear-gradient(180deg, rgba(255,255,255,0.10) 0%, transparent 60%);
   -webkit-background-clip: text; background-clip: text;
+}
+.cf__giant-logo {
+  height: 0.9em;   /* sized to the cap height of the giant letters */
+  width: auto;
+  opacity: 0.14;
+  filter: brightness(2.4) saturate(0.7);
+  /* balance the optical gap: a touch more room on the S side */
+  margin-left: 0.04em;
+  margin-right: -0.04em;
 }
 
 /* Center */
 .cf__center {
   position: relative; z-index: 10;
   flex: 1;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-start;
   text-align: center;
-  padding: 5rem 1.5rem 0;
+  padding: clamp(3rem, 2rem + 5vw, 6rem) 1.5rem 0;
   max-width: 64rem; margin-inline: auto; width: 100%;
 }
 .cf__eyebrow {
@@ -221,13 +235,14 @@ function scrollToTop() {
   color: var(--color-accent-soft); margin-bottom: 1rem;
 }
 .cf__title {
-  font-family: var(--font-display);
-  font-size: clamp(2.5rem, 1.8rem + 4vw, 5.5rem);
-  font-weight: 600; letter-spacing: -0.02em; line-height: 1.05;
+  font-family: 'Caveat', cursive;
+  font-size: clamp(2rem, 1.2rem + 3.2vw, 4rem);
+  font-weight: 500; letter-spacing: 0; line-height: 1.1;
   color: #fff;
-  background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.55) 100%);
+  background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.7) 100%);
   -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 24px rgba(255,255,255,0.12));
+  filter: drop-shadow(0 0 18px rgba(255,255,255,0.12));
+  white-space: nowrap;
 }
 .cf__motto { margin-top: 1rem; color: rgba(255,255,255,0.6); font-style: italic; max-width: 40ch; }
 .cf__links { margin-top: 2.5rem; display: flex; flex-direction: column; align-items: center; gap: 1.25rem; width: 100%; }
@@ -254,15 +269,19 @@ function scrollToTop() {
 .cf__bottom {
   position: relative; z-index: 20;
   display: flex; flex-direction: column; align-items: center; gap: 1.25rem;
-  width: 100%; padding: 0 1.5rem 2rem;
+  width: 100%; padding: 2rem 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 2rem;
 }
-.cf__copy { order: 2; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); text-align: center; }
-.cf__social { order: 1; display: flex; gap: 0.6rem; }
+.cf__copy { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); text-align: center; }
+/* social icons sit below the action buttons, centered */
+.cf__social { display: flex; gap: 0.7rem; justify-content: center; margin-top: 0.5rem; }
 .cf__social a {
-  width: 42px; height: 42px; display: grid; place-items: center; border-radius: 50%;
+  width: 52px; height: 52px; display: grid; place-items: center; border-radius: 50%;
   background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
   color: rgba(255,255,255,0.7); transition: all 0.3s;
 }
+.cf__social :deep(svg) { width: 24px; height: 24px; }
 .cf__social a:hover { color: #fff; background: var(--color-accent); border-color: transparent; }
 .cf__top {
   order: 3;
@@ -277,8 +296,7 @@ function scrollToTop() {
 
 @media (min-width: 768px) {
   .cf__bottom { flex-direction: row; justify-content: space-between; padding-bottom: 2.5rem; }
-  .cf__copy { order: 1; text-align: left; }
-  .cf__social { order: 2; }
+  .cf__copy { text-align: left; }
 }
 
 @media (prefers-reduced-motion: reduce) {

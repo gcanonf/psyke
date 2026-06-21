@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { whyTherapy, therapyTypes, contact } from '~/data/site'
+import { contact } from '~/data/site'
 useReveal()
 useSeoMeta({
   title: 'Psicoterapia online y presencial · PSYKE',
@@ -10,6 +10,101 @@ useSeoMeta({
 const waLink = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(
   'Hola, me gustaría agendar una cita de psicoterapia con PSYKE.',
 )}`
+
+const processSteps = [
+  { icon: 'start', title: 'Inicio del proceso terapéutico' },
+  { icon: 'target', title: 'Identificar objetivos terapéuticos' },
+  { icon: 'evidence', title: 'Intervención con técnicas basadas en evidencia científica' },
+  { icon: 'evaluate', title: 'Evaluación de resultados terapéuticos' },
+]
+
+// Therapy modalities shown as a gallery carousel
+interface Therapy {
+  title: string
+  phrase: string
+  description: string
+  image: string
+}
+const therapies: Therapy[] = [
+  {
+    title: 'Terapia para adultos',
+    phrase: 'Sanando el ayer, liberamos el hoy',
+    description:
+      'Acompañamiento individual para quienes atraviesan ansiedad, estrés, duelos o crisis vitales. Desde un enfoque cognitivo-conductual, con herramientas prácticas para avanzar hacia tu bienestar.',
+    image: '/images/therapies/adultos.jpg',
+  },
+  {
+    title: 'Terapia para adolescentes',
+    phrase: 'Acompañar sin juzgar',
+    description:
+      'Un espacio seguro y de confianza para expresarse sin sentirse juzgado, fortalecer la autoestima y construir herramientas para los retos propios de la adolescencia.',
+    image: '/images/therapies/adolescentes.jpg',
+  },
+  {
+    title: 'Terapia infantil',
+    phrase: 'Guiando a nuestros pequeños corazones',
+    description:
+      'Un acompañamiento cálido y lúdico para que los más pequeños expresen lo que sienten, gestionen sus emociones y crezcan con confianza y seguridad.',
+    image: '/images/therapies/infantil.jpg',
+  },
+  {
+    title: 'Terapia de pareja',
+    phrase: 'Construyendo relaciones saludables',
+    description:
+      'Un espacio para mejorar la comunicación, reparar vínculos y reencontrarse. Acompaño a las parejas a comprenderse y construir una relación más sana y consciente.',
+    image: '/images/therapies/parejas.jpg',
+  },
+  {
+    title: 'Terapia familiar',
+    phrase: 'Creciendo juntos, superando desafíos',
+    description:
+      'Cuando las dinámicas familiares se tensan, la terapia ayuda a comprenderse, comunicarse mejor y resolver conflictos para crecer como familia.',
+    image: '/images/therapies/familiar.jpg',
+  },
+  {
+    title: 'Terapia online',
+    phrase: 'Apoyo cercano, desde cualquier lugar',
+    description:
+      'El mismo acompañamiento cálido, sin importar dónde estés. Horarios flexibles y sin límites geográficos: solo necesitas un espacio tranquilo y un dispositivo.',
+    image: '/images/therapies/online.jpg',
+  },
+]
+
+// Carousel (CSS scroll-snap + arrow / dot nav)
+const trackEl = ref<HTMLElement | null>(null)
+const activeSlide = ref(0)
+
+// scroll so slide i maps evenly across the track's scroll range (every dot reachable)
+function scrollToSlide(i: number) {
+  const track = trackEl.value
+  if (!track) return
+  const maxScroll = track.scrollWidth - track.clientWidth
+  const left = (i / (therapies.length - 1)) * maxScroll
+  track.scrollTo({ left, behavior: 'smooth' })
+}
+// step by one card width (in actual pixels) so the arrows always move
+function step(dir: 1 | -1) {
+  const track = trackEl.value
+  if (!track) return
+  const first = track.children[0] as HTMLElement | undefined
+  const second = track.children[1] as HTMLElement | undefined
+  const cardStep = first && second ? second.offsetLeft - first.offsetLeft : track.clientWidth * 0.85
+  track.scrollBy({ left: dir * cardStep, behavior: 'smooth' })
+}
+function prev() {
+  step(-1)
+}
+function next() {
+  step(1)
+}
+function onTrackScroll() {
+  const track = trackEl.value
+  if (!track) return
+  const maxScroll = track.scrollWidth - track.clientWidth
+  // map scroll progress (0..1) evenly across all slides so every dot is reachable
+  const progress = maxScroll > 0 ? track.scrollLeft / maxScroll : 0
+  activeSlide.value = Math.round(progress * (therapies.length - 1))
+}
 </script>
 
 <template>
@@ -22,6 +117,7 @@ const waLink = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(
           :speed="0.3"
         />
       </div>
+      <img src="/logo-mark.svg" alt="" class="shader-hero__watermark" aria-hidden="true" />
       <div class="shader-hero__veil" aria-hidden="true" />
       <div class="container shader-hero__inner">
         <p class="shader-hero__eyebrow reveal">Psicoterapia</p>
@@ -49,72 +145,181 @@ const waLink = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(
 
     <span id="contenido" />
 
-    <section class="section">
-      <div class="container two-col">
-        <div class="prose reveal">
-          <h2 class="h2">Terapia sin límites geográficos</h2>
-          <p>
-            La consulta clínica online te permite iniciar tu proceso desde donde
-            estés, con horarios flexibles que se ajustan a tu vida. Solo
-            necesitas un espacio tranquilo, conexión a internet y un dispositivo:
-            celular, tableta o computador.
+    <!-- Process workflow -->
+    <section class="section process" aria-labelledby="proc-h">
+      <div class="container">
+        <header class="head--center reveal">
+          <p class="eyebrow">El proceso</p>
+          <h2 id="proc-h" class="h2">Cómo es tu proceso terapéutico</h2>
+        </header>
+        <ol class="proc">
+          <li
+            v-for="(step, i) in processSteps"
+            :key="step.title"
+            class="proc__step reveal"
+            :data-reveal-delay="i * 100"
+          >
+            <span class="proc__icon"><ProcessIcon :name="step.icon" /></span>
+            <span class="proc__num">{{ i + 1 }}</span>
+            <h3 class="proc__title">{{ step.title }}</h3>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Order from chaos -->
+    <section class="section entropy-sec" aria-labelledby="ent-h">
+      <div class="container entropy-grid">
+        <div class="entropy-copy reveal">
+          <p class="eyebrow">Del caos al orden</p>
+          <h2 id="ent-h" class="h2">Encontrar orden en medio del caos</h2>
+          <p class="entropy-text">
+            A veces las emociones se sienten dispersas, impredecibles, en
+            movimiento constante. La terapia no elimina la complejidad de la
+            vida: te acompaña a darle estructura, a comprenderla y a encontrar
+            calma y claridad en medio de ella.
+          </p>
+          <p class="entropy-text">
+            Paso a paso, lo que se vivía como desorden empieza a tomar forma y
+            sentido.
           </p>
         </div>
-        <ul class="needs card reveal" data-reveal-delay="120">
-          <li><CheckMark /> Un espacio tranquilo y privado</li>
-          <li><CheckMark /> Conexión a internet estable</li>
-          <li><CheckMark /> Celular, tableta o computador</li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section why" aria-labelledby="why-h">
-      <div class="container">
-        <header class="head--center reveal">
-          <p class="eyebrow">¿Por qué ir a terapia?</p>
-          <h2 id="why-h" class="h2">La terapia te ayuda a…</h2>
-        </header>
-        <ul class="why__grid">
-          <li
-            v-for="(w, i) in whyTherapy"
-            :key="w"
-            class="why__item card reveal"
-            :data-reveal-delay="i * 60"
-          >
-            <CheckMark /> <span>{{ w }}</span>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="section types" aria-labelledby="types-h">
-      <div class="container">
-        <header class="head--center reveal">
-          <p class="eyebrow">Modalidades</p>
-          <h2 id="types-h" class="h2">Acompañamiento para cada momento</h2>
-        </header>
-        <div class="types__grid">
-          <article
-            v-for="(t, i) in therapyTypes"
-            :key="t.title"
-            class="card types__card reveal"
-            :data-reveal-delay="i * 80"
-          >
-            <h3>{{ t.title }}</h3>
-            <p>{{ t.text }}</p>
-          </article>
+        <div class="entropy-viz reveal" data-reveal-delay="120">
+          <EntropyCanvas :size="440" />
+          <div class="entropy-labels" aria-hidden="true">
+            <span>Caos</span>
+            <span>Orden</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <CtaBand
-      title="Da el primer paso hacia tu bienestar"
-      text="Agenda tu primera sesión y construyamos juntos un espacio seguro para tu proceso."
-    />
+    <!-- Modalities gallery (carousel) -->
+    <section class="section gallery" aria-labelledby="gal-h">
+      <div class="container">
+        <header class="gallery__head reveal">
+          <div>
+            <p class="eyebrow">Modalidades</p>
+            <h2 id="gal-h" class="h2">Acompañamiento para cada momento</h2>
+            <p class="lede gallery__desc">
+              Cada persona y cada momento es único. Estas son las formas en que
+              puedo acompañarte.
+            </p>
+          </div>
+          <div class="gallery__arrows">
+            <button class="gallery__arrow" aria-label="Anterior" :disabled="activeSlide === 0" @click="prev">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>
+            </button>
+            <button class="gallery__arrow" aria-label="Siguiente" :disabled="activeSlide === therapies.length - 1" @click="next">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+            </button>
+          </div>
+        </header>
+      </div>
+
+      <div class="container">
+        <div ref="trackEl" class="gallery__track" @scroll.passive="onTrackScroll">
+          <article v-for="t in therapies" :key="t.title" class="gallery__card">
+            <div class="gallery__media">
+              <NuxtImg
+                :src="t.image"
+                :alt="t.title"
+                width="640"
+                height="640"
+                sizes="(max-width: 768px) 80vw, 420px"
+                class="gallery__img"
+                placeholder
+              />
+            </div>
+            <div class="gallery__content">
+              <p class="gallery__phrase">«{{ t.phrase }}»</p>
+              <h3 class="gallery__title">{{ t.title }}</h3>
+              <p class="gallery__text">{{ t.description }}</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="gallery__dots" role="tablist" aria-label="Modalidades">
+          <button
+            v-for="(t, i) in therapies"
+            :key="t.title"
+            class="gallery__dot"
+            :class="{ 'gallery__dot--on': activeSlide === i }"
+            :aria-label="`Ver ${t.title}`"
+            :aria-selected="activeSlide === i"
+            @click="scrollToSlide(i)"
+          />
+        </div>
+      </div>
+    </section>
+
   </div>
 </template>
 
 <style scoped>
+/* ---- Process workflow ---- */
+.process .head--center { margin-bottom: clamp(2.5rem, 2rem + 2vw, 3.5rem); }
+.proc {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+.proc__step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 0.5rem;
+}
+.proc__icon {
+  width: 64px; height: 64px;
+  display: grid; place-items: center;
+  color: var(--color-primary);
+}
+.proc__icon :deep(svg) { width: 40px; height: 40px; }
+.proc__num {
+  width: 34px; height: 34px;
+  display: grid; place-items: center;
+  margin: 0.75rem 0 1rem;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  font-family: var(--font-display);
+  font-weight: 700; font-size: 1rem;
+  box-shadow: var(--shadow);
+  position: relative; z-index: 1;
+}
+.proc__title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  line-height: 1.35;
+  max-width: 22ch;
+}
+
+@media (min-width: 760px) {
+  .proc { grid-template-columns: repeat(4, 1fr); }
+  /* connecting line through the numbered nodes */
+  .proc::before {
+    content: '';
+    position: absolute;
+    top: 81px; /* aligns with the centre of the number nodes */
+    left: 12.5%; right: 12.5%;
+    height: 2px;
+    background: repeating-linear-gradient(
+      to right,
+      var(--color-accent-soft) 0 10px,
+      transparent 10px 18px
+    );
+    z-index: 0;
+  }
+}
+
 /* ---- Full-screen shader hero ---- */
 .shader-hero {
   position: relative;
@@ -126,6 +331,20 @@ const waLink = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(
   color: var(--color-ink);
 }
 .shader-hero__bg { position: absolute; inset: 0; z-index: 0; }
+/* Large, very subtle logo mark watermark behind everything */
+.shader-hero__watermark {
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  right: -6%;
+  transform: translateY(-50%);
+  height: 130%;
+  width: auto;
+  opacity: 0.06;
+  pointer-events: none;
+  user-select: none;
+  filter: saturate(0.6);
+}
 /* soft light veil so the title stays legible over the mesh gradient */
 .shader-hero__veil {
   position: absolute;
@@ -164,25 +383,87 @@ const waLink = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(
   .shader-hero__scroll svg { animation: none; }
 }
 
-.two-col { display: grid; gap: 2rem; align-items: start; }
 .h2 { font-size: var(--step-3); margin-bottom: 1rem; }
-.needs { padding: 1.75rem; display: flex; flex-direction: column; gap: 0.9rem; }
-.needs li { display: flex; gap: 0.6rem; align-items: center; font-weight: 500; }
 .head--center { text-align: center; max-width: 40rem; margin: 0 auto clamp(2rem, 1.5rem + 2vw, 3rem); }
-.why { background: var(--color-surface-alt); }
-.why__grid { display: grid; gap: 1rem; grid-template-columns: 1fr; }
-.why__item { display: flex; gap: 0.75rem; align-items: flex-start; padding: 1.1rem 1.25rem; font-weight: 500; }
-.types__grid { display: grid; gap: 1.25rem; grid-template-columns: 1fr; }
-.types__card { padding: 1.75rem; }
-.types__card h3 { color: var(--color-primary); font-size: var(--step-1); margin-bottom: 0.5rem; }
-.types__card p { color: var(--color-ink-soft); }
 
-@media (min-width: 760px) {
-  .two-col { grid-template-columns: 1.4fr 0.9fr; }
-  .why__grid { grid-template-columns: repeat(2, 1fr); }
-  .types__grid { grid-template-columns: repeat(2, 1fr); }
+/* ---- Order from chaos (entropy) ---- */
+.entropy-sec { background: var(--color-surface-alt); }
+.entropy-grid { display: grid; gap: clamp(2rem, 1.5rem + 3vw, 3.5rem); align-items: center; }
+.entropy-text { color: var(--color-ink-soft); margin-top: 1rem; max-width: 48ch; }
+.entropy-viz { justify-self: center; width: 100%; max-width: 440px; }
+.entropy-labels {
+  display: flex; justify-content: space-between;
+  margin-top: 0.75rem;
+  font-family: var(--font-body); font-weight: 600;
+  font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase;
 }
-@media (min-width: 1024px) {
-  .types__grid { grid-template-columns: repeat(4, 1fr); }
+.entropy-labels span:first-child { color: var(--color-muted); }
+.entropy-labels span:last-child { color: var(--color-primary); }
+@media (min-width: 860px) {
+  .entropy-grid { grid-template-columns: 1fr auto; }
+}
+/* ---- Modalities gallery (carousel) ---- */
+.gallery__head {
+  display: flex; flex-wrap: wrap; gap: 1.5rem;
+  justify-content: space-between; align-items: flex-end;
+  margin-bottom: clamp(1.75rem, 1.4rem + 2vw, 2.75rem);
+}
+.gallery__desc { margin-top: 0.75rem; max-width: 44ch; }
+.gallery__arrows { display: none; gap: 0.6rem; }
+.gallery__arrow {
+  width: 48px; height: 48px; flex: 0 0 auto;
+  display: grid; place-items: center; border-radius: 50%;
+  border: 1.5px solid var(--color-border); background: transparent;
+  color: var(--color-ink); cursor: pointer; transition: all var(--dur);
+}
+.gallery__arrow:hover:not(:disabled) { border-color: var(--color-primary); color: var(--color-primary); background: var(--color-primary-tint); }
+.gallery__arrow:disabled { opacity: 0.35; cursor: not-allowed; }
+
+/* scroll-snap track (kept within the container width) */
+.gallery__track {
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: 0.5rem 0 1.5rem;
+  scrollbar-width: none;
+}
+.gallery__track::-webkit-scrollbar { display: none; }
+.gallery__card {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  width: min(78vw, 18rem);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  scroll-snap-align: start;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-lg);
+}
+.gallery__media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* square image up top */
+  overflow: hidden;
+}
+.gallery__img,
+.gallery__img :deep(img) { width: 100%; height: 100%; object-fit: cover; transition: transform 600ms var(--ease-out); }
+.gallery__card:hover .gallery__img :deep(img) { transform: scale(1.05); }
+/* solid light footer — text always crisp and readable */
+.gallery__content { padding: 1.4rem; }
+.gallery__phrase { font-family: var(--font-display); font-style: italic; color: var(--color-accent); margin-bottom: 0.35rem; font-size: 0.95rem; }
+.gallery__title { font-size: var(--step-1); color: var(--color-primary); margin-bottom: 0.55rem; }
+.gallery__text { font-size: 0.9rem; line-height: 1.5; color: var(--color-ink-soft); }
+
+.gallery__dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1.5rem; }
+.gallery__dot {
+  width: 9px; height: 9px; border-radius: 50%; border: 0; padding: 0;
+  background: var(--color-border); cursor: pointer; transition: all var(--dur);
+}
+.gallery__dot--on { background: var(--color-primary); transform: scale(1.3); }
+
+@media (min-width: 768px) {
+  .gallery__arrows { display: flex; }
+  .gallery__card { width: 21rem; }
 }
 </style>

@@ -16,6 +16,35 @@ const waLink = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(
 // Split the reasons around the central image (about-us style layout)
 const whyLeft = whyTherapy.slice(0, Math.ceil(whyTherapy.length / 2))
 const whyRight = whyTherapy.slice(Math.ceil(whyTherapy.length / 2))
+
+// Orbiting keywords around the logo (the "sello de PSYKE")
+const sello = [
+  {
+    id: 1,
+    keyword: 'Compromiso social',
+    text: 'Un trabajo con sentido comunitario: acompaño a personas, comunidades y organizaciones, buscando un impacto real en su bienestar.',
+  },
+  {
+    id: 2,
+    keyword: 'Formación continua',
+    text: 'Dos maestrías y más de 15 años de actualización constante para ofrecerte un acompañamiento riguroso y al día.',
+  },
+  {
+    id: 3,
+    keyword: 'Promoción y prevención',
+    text: 'Un enfoque centrado en cuidar la salud mental antes de la crisis: promover el bienestar y prevenir los riesgos psicosociales.',
+  },
+  {
+    id: 4,
+    keyword: 'Metodologías innovadoras',
+    text: 'Combino lo psicológico y lo pedagógico con metodologías participativas que hacen del aprendizaje una experiencia cercana y transformadora.',
+  },
+  {
+    id: 5,
+    keyword: 'Red profesional',
+    text: 'Una amplia red de colaboración con instituciones educativas, de salud y comunitarias que enriquece cada proceso.',
+  },
+]
 </script>
 
 <template>
@@ -124,10 +153,10 @@ const whyRight = whyTherapy.slice(Math.ceil(whyTherapy.length / 2))
 
           <div class="why3__media reveal" data-reveal-delay="120">
             <NuxtImg
-              src="/images/services/cultura-del-cuidado.jpg"
-              alt="Personas acompañándose en su proceso de bienestar"
-              width="800"
-              height="560"
+              src="/images/services/primer-paso.jpg"
+              alt="Pies dando un primer paso sobre un camino empedrado"
+              width="960"
+              height="540"
               sizes="(max-width: 1000px) 90vw, 360px"
               placeholder
             />
@@ -149,8 +178,18 @@ const whyRight = whyTherapy.slice(Math.ceil(whyTherapy.length / 2))
       </div>
     </section>
 
-    <!-- TESTIMONIALS (bento) -->
-    <TestimonialsBento />
+    <!-- El sello de PSYKE (radial orbit) -->
+    <section class="section sello" aria-labelledby="sello-h">
+      <div class="container">
+        <header class="head head--center reveal">
+          <p class="eyebrow">Lo que nos diferencia</p>
+          <h2 id="sello-h" class="head__title">El sello de PSYKE</h2>
+        </header>
+        <div class="reveal" data-reveal-delay="120">
+          <RadialOrbit :nodes="sello" />
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -288,7 +327,7 @@ const whyRight = whyTherapy.slice(Math.ceil(whyTherapy.length / 2))
   box-shadow: var(--shadow-lg);
   position: relative;
   z-index: 1;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
 }
 .why3__media::before {
@@ -347,4 +386,7 @@ const whyRight = whyTherapy.slice(Math.ceil(whyTherapy.length / 2))
     z-index: 1;
   }
 }
+
+/* El sello de PSYKE (radial orbit) */
+.sello { background: var(--color-surface-alt); }
 </style>

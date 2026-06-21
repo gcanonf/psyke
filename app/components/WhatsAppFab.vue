@@ -30,24 +30,36 @@ const href = computed(
   z-index: 90;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.85rem;
-  border-radius: var(--radius-pill);
+  justify-content: center;
+  /* perfect circle by default — icon centred */
+  width: 56px;
+  height: 56px;
+  padding: 0;
+  border-radius: 999px;
   background: #25d366;
   color: #fff;
   box-shadow: 0 12px 30px -8px rgba(37, 211, 102, 0.6);
-  transition: transform var(--dur) var(--ease-out), padding var(--dur) var(--ease-out);
+  overflow: hidden;
+  transition: transform var(--dur) var(--ease-out), width var(--dur) var(--ease-out), padding var(--dur) var(--ease-out);
 }
-.fab:hover { transform: translateY(-3px); padding-inline: 1.1rem; }
+.fab :deep(svg) { flex: 0 0 auto; }
+.fab:hover {
+  transform: translateY(-3px);
+  /* expand to a pill on hover to reveal the label */
+  width: 11.5rem;
+  padding-inline: 1.1rem;
+  justify-content: flex-start;
+  gap: 0.55rem;
+}
 .fab__label {
   font-weight: 600;
   font-size: 0.95rem;
-  max-width: 0;
-  overflow: hidden;
   white-space: nowrap;
-  transition: max-width var(--dur) var(--ease-out);
+  opacity: 0;
+  max-width: 0;
+  transition: opacity var(--dur) var(--ease-out), max-width var(--dur) var(--ease-out);
 }
-.fab:hover .fab__label { max-width: 110px; }
+.fab:hover .fab__label { opacity: 1; max-width: 8rem; }
 
 @media (max-width: 540px) {
   .fab__label { display: none; }

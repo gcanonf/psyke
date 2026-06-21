@@ -20,6 +20,7 @@ export default defineNuxtConfig({
     families: [
       { name: 'Lora', provider: 'google', weights: [400, 500, 600, 700] },
       { name: 'Raleway', provider: 'google', weights: [300, 400, 500, 600, 700] },
+      { name: 'Caveat', provider: 'google', weights: [400, 500, 600] },
     ],
   },
 
@@ -69,7 +70,7 @@ export default defineNuxtConfig({
         },
         { name: 'twitter:image', content: '/og-image.jpg' },
       ],
-      link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+      link: [{ rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     },
   },
 })
