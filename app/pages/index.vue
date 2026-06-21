@@ -3,10 +3,10 @@ import { brand, contact, whyTherapy, differentiators } from '~/data/site'
 
 useReveal()
 
-useSeoMeta({
-  title: 'PSYKE · Psicología y bienestar emocional · Eva Margarita Cañón Falla',
+useSeo({
+  title: 'Psicóloga en Bogotá · Psicoterapia y EMDR online | PSYKE',
   description:
-    'Psicoterapia, EMDR y programas de cuidado emocional con Eva Margarita Cañón Falla. Atención clínica online y presencial desde Bogotá. Cuidar de tu salud mental es cuidar de tu vida.',
+    'Psicoterapia, EMDR y bienestar emocional con la psicóloga Eva Margarita Cañón Falla. Atención online y presencial en Bogotá, Colombia. Agenda tu cita: cuidar tu salud mental es cuidar tu vida.',
 })
 
 const waLink = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(

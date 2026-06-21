@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { contact } from '~/data/site'
 useReveal()
-useSeoMeta({
-  title: 'Contacto · Agenda tu cita · PSYKE',
+useSeo({
+  title: 'Contacto · Agenda tu cita de psicología | PSYKE Bogotá',
   description:
-    'Agenda tu cita con PSYKE. Escríbenos por WhatsApp o correo electrónico. Atención online y presencial desde Bogotá, Colombia.',
+    'Agenda tu cita con PSYKE por WhatsApp o correo electrónico. Psicoterapia y EMDR, atención online y presencial desde Bogotá, Colombia.',
 })
 
 const waLink = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(

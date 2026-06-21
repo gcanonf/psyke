@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { brand } from '~/data/site'
 useReveal()
-useSeoMeta({
-  title: 'Sobre mí · Eva Margarita Cañón Falla · PSYKE',
+useSeo({
+  title: 'Sobre mí · Eva Margarita Cañón Falla, psicóloga en Bogotá | PSYKE',
   description:
-    'Soy Eva Margarita Cañón Falla, psicóloga con dos maestrías y más de 15 años de experiencia en salud mental, educación socioemocional y protección de la niñez. Fundadora de PSYKE en Bogotá.',
+    'Conoce a Eva Margarita Cañón Falla, psicóloga con dos maestrías y más de 15 años de experiencia en salud mental, EMDR, educación socioemocional y protección de la niñez. Fundadora de PSYKE, Bogotá, Colombia.',
 })
 
 // Education (from her LinkedIn profile)

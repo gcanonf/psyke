@@ -1,4 +1,19 @@
+# PSYKE — Eva Margarita Cañón Falla · Psicología y bienestar emocional (Bogotá, Colombia)
 User-agent: *
 Allow: /
 
-Sitemap: /sitemap.xml
+# AI answer engines / LLM crawlers — explicitly welcomed
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+User-agent: PerplexityBot
+Allow: /
+User-agent: ClaudeBot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://psyke.com.co/sitemap.xml

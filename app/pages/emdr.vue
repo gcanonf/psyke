@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { contact } from '~/data/site'
 useReveal()
-useSeoMeta({
-  title: 'EMDR · Terapia para procesar el trauma · PSYKE',
+useSeo({
+  title: 'Terapia EMDR para el trauma en Bogotá · online | PSYKE',
   description:
-    'EMDR con Eva Margarita Cañón Falla, especialista certificada. Enfoque validado científicamente para reprocesar recuerdos dolorosos: trauma, ansiedad, fobias y bloqueos emocionales. Online y presencial.',
+    'EMDR en Bogotá con Eva Margarita Cañón Falla, especialista en trauma. Enfoque validado científicamente para reprocesar recuerdos dolorosos: trauma, ansiedad, fobias y bloqueos. Online y presencial en Colombia.',
 })
 
 const waLink = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(

@@ -1,6 +1,16 @@
 // Central content source — all text extracted from the current PSYKE site.
 // Editing copy here updates it everywhere.
 
+// ── Site / SEO config ───────────────────────────────────────────────
+// CHANGE `url` to the real production domain when it's known (no trailing slash).
+export const site = {
+  url: 'https://psyke.com.co', // ← placeholder; update on deploy
+  name: 'PSYKE',
+  locale: 'es_CO',
+  // Bogotá, Colombia — used for local SEO / geo schema
+  geo: { lat: 4.711, lng: -74.0721, region: 'CO-DC', city: 'Bogotá', country: 'CO' },
+}
+
 export const contact = {
   email: 'psyke.sas@gmail.com',
   phoneDisplay: '+57 304 553 2521',

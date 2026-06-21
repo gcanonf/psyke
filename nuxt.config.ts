@@ -12,7 +12,7 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ['/'],
+      routes: ['/', '/sitemap.xml'],
     },
   },
 
@@ -43,32 +43,20 @@ export default defineNuxtConfig({
         },
         { name: 'theme-color', content: '#6D5BA6' },
         { name: 'author', content: 'PSYKE SAS · Eva Margarita Cañón Falla' },
-        // Open Graph
-        { property: 'og:type', content: 'website' },
+        { name: 'robots', content: 'index, follow, max-image-preview:large' },
+        // Colombia / Bogotá local-SEO geo signals
+        { name: 'geo.region', content: 'CO-DC' },
+        { name: 'geo.placename', content: 'Bogotá, Colombia' },
+        { name: 'geo.position', content: '4.711;-74.0721' },
+        { name: 'ICBM', content: '4.711, -74.0721' },
+        {
+          name: 'keywords',
+          content:
+            'psicóloga Bogotá, terapia psicológica Colombia, EMDR Bogotá, psicoterapia online Colombia, salud mental, bienestar emocional, terapia de pareja, terapia familiar, terapia infantil, Eva Margarita Cañón Falla, PSYKE',
+        },
+        // Open Graph defaults (per-page title/description/url set via useSeo)
         { property: 'og:site_name', content: 'PSYKE' },
         { property: 'og:locale', content: 'es_CO' },
-        {
-          property: 'og:title',
-          content: 'PSYKE · Psicología y bienestar emocional',
-        },
-        {
-          property: 'og:description',
-          content:
-            'Psicoterapia, EMDR y programas de cuidado emocional. Atención online y presencial desde Bogotá.',
-        },
-        { property: 'og:image', content: '/og-image.jpg' },
-        // Twitter
-        { name: 'twitter:card', content: 'summary_large_image' },
-        {
-          name: 'twitter:title',
-          content: 'PSYKE · Psicología y bienestar emocional',
-        },
-        {
-          name: 'twitter:description',
-          content:
-            'Psicoterapia, EMDR y programas de cuidado emocional. Atención online y presencial desde Bogotá.',
-        },
-        { name: 'twitter:image', content: '/og-image.jpg' },
       ],
       link: [{ rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' }],
     },

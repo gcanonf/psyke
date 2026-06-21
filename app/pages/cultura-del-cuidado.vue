@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { careWorkshops, contact } from '~/data/site'
 useReveal()
-useSeoMeta({
-  title: 'Cultura del Cuidado · Talleres para equipos y comunidades · PSYKE',
+useSeo({
+  title: 'Cultura del Cuidado · Talleres de bienestar para empresas | PSYKE',
   description:
-    'Espacios formativos que equilibran el desarrollo profesional con el bienestar emocional. Talleres de autoliderazgo, comunicación, resiliencia, gestión del tiempo y más.',
+    'Talleres y conferencias de bienestar para equipos y comunidades en Colombia: autoliderazgo, comunicación, resiliencia, gestión del tiempo, negociación y equilibrio integral. A la medida de tu organización.',
 })
 
 const waLink = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(

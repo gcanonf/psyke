@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { contact } from '~/data/site'
 useReveal()
-useSeoMeta({
-  title: 'Psicoterapia online y presencial · PSYKE',
+useSeo({
+  title: 'Psicoterapia online y presencial en Bogotá | PSYKE',
   description:
-    'Consulta clínica cálida y humanizada con enfoque cognitivo-conductual. Psicoterapia para adultos, adolescentes, crisis y trauma. Online y presencial, sin límites geográficos.',
+    'Psicoterapia para adultos, adolescentes, niños, parejas y familias con enfoque cognitivo-conductual. Atención cálida online y presencial en Bogotá, Colombia. Agenda tu primera sesión.',
 })
 
 const waLink = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(

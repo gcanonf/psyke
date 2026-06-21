@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { contact } from '~/data/site'
 useReveal()
-useSeoMeta({
-  title: 'Psicoeducación para la Vida · Talleres y conferencias · PSYKE',
+useSeo({
+  title: 'Psicoeducación · Talleres y conferencias de salud mental | PSYKE',
   description:
-    'Faros de conocimiento y cuidado: talleres y conferencias que integran psicología, educación y trabajo comunitario para fortalecer la salud mental sin estigmas.',
+    'Talleres y conferencias de psicoeducación en Colombia que integran psicología, educación y trabajo comunitario para fortalecer la salud mental sin estigmas, en instituciones, empresas y comunidades.',
 })
 
 const waLink = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(
