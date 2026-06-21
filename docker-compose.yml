@@ -1,0 +1,22 @@
+# Coolify deployment — static PSYKE site served by Caddy.
+#
+# In Coolify:
+#   1. New Resource → Docker Compose → point at this repo.
+#   2. Set the domain (e.g. https://psyke.gcanon.de) on the `web` service;
+#      Coolify's Traefik handles routing + TLS automatically.
+#   3. Deploy. Coolify builds the Dockerfile and proxies to port 80.
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    # Coolify reads this to know which container port to route to.
+    expose:
+      - "80"
+    # Optional: lightweight health check
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://127.0.0.1:80/"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
