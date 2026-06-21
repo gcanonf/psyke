@@ -196,17 +196,17 @@ const whyRight = whyTherapy.slice(Math.ceil(whyTherapy.length / 2))
 /* Large circle whose edges fade softly into the page background */
 .hero__circle {
   position: relative;
-  width: clamp(18rem, 34vw, 30rem);
+  width: clamp(22rem, 42vw, 38rem);
   aspect-ratio: 1 / 1;
 }
 .hero__circle :deep(img) {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* very gradual radial fade — fully gone well before the box edge, so no line
-     ever meets the section bounds */
-  -webkit-mask-image: radial-gradient(circle at 50% 48%, #000 20%, rgba(0,0,0,0.5) 42%, rgba(0,0,0,0.18) 58%, transparent 72%);
-  mask-image: radial-gradient(circle at 50% 48%, #000 20%, rgba(0,0,0,0.5) 42%, rgba(0,0,0,0.18) 58%, transparent 72%);
+  /* larger box keeps the visible photo big; fade still completes (~62%) so a
+     transparent margin remains and no edge reaches the section bounds */
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 30%, rgba(0,0,0,0.55) 46%, rgba(0,0,0,0.18) 56%, transparent 64%);
+  mask-image: radial-gradient(circle at 50% 50%, #000 30%, rgba(0,0,0,0.55) 46%, rgba(0,0,0,0.18) 56%, transparent 64%);
 }
 .hero__badge {
   position: absolute;

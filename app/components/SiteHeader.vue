@@ -32,7 +32,7 @@ const waLink = computed(
   <header class="header" :class="{ 'header--solid': scrolled || open }">
     <div class="container header__inner">
       <NuxtLink to="/" class="brand" aria-label="PSYKE — Inicio">
-        <BrandLogo class="brand__logo" />
+        <img src="/logo-mark.svg" alt="" class="brand__logo" width="48" height="45" />
         <span class="brand__name">{{ brand.name }}</span>
       </NuxtLink>
 
@@ -112,10 +112,16 @@ const waLink = computed(
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.55rem;
   margin-right: auto;
 }
-.brand__logo { width: 34px; height: 34px; }
+.brand__logo {
+  height: 42px;
+  width: auto;
+  display: block;
+  transition: transform var(--dur) var(--ease-out);
+}
+.brand:hover .brand__logo { transform: scale(1.05); }
 .brand__name {
   font-family: var(--font-display);
   font-weight: 600;
