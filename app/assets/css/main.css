@@ -1,0 +1,227 @@
+/* ==========================================================================
+   PSYKE — Design tokens & global styles
+   Elegant editorial wellness · Lora (display) + Raleway (body)
+   ========================================================================== */
+
+:root {
+  /* --- Palette: calming lavender + sage, warm cream ground --- */
+  --color-primary: #6d5ba6;          /* deepened lavender — AA on cream */
+  --color-primary-soft: #8b7fc0;
+  --color-primary-tint: #efeafa;
+  --color-on-primary: #ffffff;
+
+  --color-accent: #4f8a6d;           /* sage / wellness green */
+  --color-accent-soft: #79a98f;
+  --color-accent-tint: #e8f1ec;
+
+  --color-bg: #faf7f2;               /* warm cream */
+  --color-surface: #ffffff;
+  --color-surface-alt: #f3eee7;      /* muted sand */
+
+  --color-ink: #2c2638;              /* near-black plum, body text */
+  --color-ink-soft: #5a5270;         /* secondary text (AA on cream) */
+  --color-muted: #8a8398;
+
+  --color-border: #e7ddd0;
+  --color-border-soft: #f0e9df;
+
+  /* --- Typography --- */
+  --font-display: 'Lora', Georgia, 'Times New Roman', serif;
+  --font-body: 'Raleway', system-ui, -apple-system, sans-serif;
+
+  /* fluid type scale */
+  --step--1: clamp(0.83rem, 0.78rem + 0.2vw, 0.92rem);
+  --step-0: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --step-1: clamp(1.2rem, 1.1rem + 0.5vw, 1.5rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2.1rem);
+  --step-3: clamp(2rem, 1.6rem + 1.8vw, 3rem);
+  --step-4: clamp(2.5rem, 1.9rem + 3vw, 4.25rem);
+
+  /* --- Space / radius / shadow --- */
+  --space-section: clamp(4rem, 3rem + 6vw, 8rem);
+  --radius-sm: 10px;
+  --radius: 18px;
+  --radius-lg: 28px;
+  --radius-pill: 999px;
+
+  --shadow-sm: 0 2px 8px rgba(44, 38, 56, 0.06);
+  --shadow: 0 14px 40px -18px rgba(44, 38, 56, 0.22);
+  --shadow-lg: 0 30px 70px -30px rgba(44, 38, 56, 0.32);
+
+  --maxw: 1180px;
+  --maxw-prose: 68ch;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur: 240ms;
+}
+
+/* --- Reset --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.65;
+  color: var(--color-ink);
+  background: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.12;
+  color: var(--color-ink);
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+
+p { text-wrap: pretty; }
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img, picture, svg { display: block; max-width: 100%; }
+
+button { font: inherit; cursor: pointer; }
+
+ul { list-style: none; padding: 0; }
+
+:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* --- Layout helpers --- */
+.container {
+  width: 100%;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.section {
+  padding-block: var(--space-section);
+}
+
+.prose {
+  max-width: var(--maxw-prose);
+}
+.prose p + p { margin-top: 1.1em; }
+.prose p { color: var(--color-ink-soft); font-size: var(--step-0); }
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: var(--step--1);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 0.9rem;
+}
+
+.lede {
+  font-size: var(--step-1);
+  color: var(--color-ink-soft);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* --- Buttons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+  font-size: var(--step-0);
+  border: 1.5px solid transparent;
+  transition: transform var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out), background var(--dur) var(--ease-out),
+    color var(--dur) var(--ease-out);
+  min-height: 48px;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+
+.btn--primary {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  box-shadow: var(--shadow);
+}
+.btn--primary:hover { background: #5d4d93; box-shadow: var(--shadow-lg); }
+
+.btn--accent {
+  background: var(--color-accent);
+  color: #fff;
+  box-shadow: var(--shadow);
+}
+.btn--accent:hover { background: #43785e; }
+
+.btn--ghost {
+  background: transparent;
+  color: var(--color-primary);
+  border-color: var(--color-border);
+}
+.btn--ghost:hover { border-color: var(--color-primary); background: var(--color-primary-tint); }
+
+/* --- Cards --- */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--dur) var(--ease-out),
+    box-shadow var(--dur) var(--ease-out);
+}
+
+/* --- Scroll-reveal (Intersection Observer driven) --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* --- Accessibility: honor reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+  .btn:hover { transform: none; }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0);
+  white-space: nowrap; border: 0;
+}

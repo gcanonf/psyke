@@ -1,0 +1,29 @@
+{
+  "name": "psyke-web",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "scripts": {
+    "prepare-nuxt": "nuxt prepare",
+    "dev": "nuxt dev",
+    "build": "nuxt prepare && nuxt build",
+    "generate": "nuxt prepare && nuxt generate",
+    "preview": "nuxt preview"
+  },
+  "dependencies": {
+    "@nuxt/fonts": "^0.14.0",
+    "@nuxt/image": "^2.0.0",
+    "@paper-design/shaders": "^0.0.76",
+    "gsap": "^3.15.0",
+    "nuxt": "^4.4.8",
+    "three": "^0.184.0"
+  },
+  "devDependencies": {
+    "@oxc-minify/binding-linux-x64-gnu": "0.133.0",
+    "@oxc-parser/binding-linux-x64-gnu": "0.133.0",
+    "@oxc-transform/binding-linux-x64-gnu": "0.133.0",
+    "@rolldown/binding-linux-x64-gnu": "1.0.3"
+  }
+}
