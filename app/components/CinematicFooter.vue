@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { brand, contact } from '~/data/site'
 
 const wrapper = ref<HTMLElement | null>(null)
@@ -33,46 +32,45 @@ function magnetize(el: HTMLElement) {
   }
 }
 
-let ctx: gsap.Context | undefined
 const magnetCleanups: Array<() => void> = []
+let io: IntersectionObserver | undefined
 
 onMounted(() => {
   if (typeof window === 'undefined' || !wrapper.value) return
 
+  // Apply gentle magnetic pull to pills (only enhancement that uses gsap)
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-  if (reduced) {
-    // Show everything statically; no scroll-jacking, no magnetic effects.
-    gsap.set([giant.value, heading.value, links.value], { opacity: 1, y: 0, scale: 1 })
-    return
+  if (!reduced) {
+    wrapper.value
+      .querySelectorAll<HTMLElement>('[data-magnetic]')
+      .forEach((el) => magnetCleanups.push(magnetize(el)))
   }
 
-  gsap.registerPlugin(ScrollTrigger)
-
-  ctx = gsap.context(() => {
-    // `immediateRender: false` keeps the element at its natural (visible) state
-    // until the trigger actually scrolls into view, so content is never stuck
-    // at opacity:0 after SPA navigation.
-    gsap.from(giant.value, {
-      y: '8vh', scale: 0.85, opacity: 0, ease: 'power1.out', immediateRender: false,
-      scrollTrigger: { trigger: wrapper.value, start: 'top 80%', end: 'bottom bottom', scrub: 1 },
-    })
-    gsap.from([heading.value, links.value], {
-      y: 40, opacity: 0, stagger: 0.15, ease: 'power3.out', immediateRender: false,
-      scrollTrigger: { trigger: wrapper.value, start: 'top 45%', end: 'bottom bottom', scrub: 1 },
-    })
-  }, wrapper.value)
-
-  // Apply gentle magnetic pull to pills
-  wrapper.value
-    .querySelectorAll<HTMLElement>('[data-magnetic]')
-    .forEach((el) => magnetCleanups.push(magnetize(el)))
-
-  // Recalculate trigger positions after the SPA route has rendered.
-  nextTick(() => ScrollTrigger.refresh())
+  // Reveal: content is VISIBLE by default (CSS). A one-shot IntersectionObserver
+  // just adds the 'is-in' class to play the entrance once the footer scrolls in.
+  // If the observer never fires (short page / already in view on SPA nav), the
+  // content is already shown — it can never get stuck invisible.
+  const els = [giant.value, heading.value, links.value].filter(Boolean) as HTMLElement[]
+  if (reduced || !('IntersectionObserver' in window)) {
+    els.forEach((el) => el.classList.add('is-in'))
+    return
+  }
+  io = new IntersectionObserver(
+    (entries) => {
+      for (const e of entries) {
+        if (e.isIntersecting) {
+          ;(e.target as HTMLElement).classList.add('is-in')
+          io?.unobserve(e.target)
+        }
+      }
+    },
+    { threshold: 0.15 },
+  )
+  els.forEach((el) => io!.observe(el))
 })
 
 onBeforeUnmount(() => {
-  ctx?.revert()
+  io?.disconnect()
   magnetCleanups.forEach((fn) => fn())
 })
 
@@ -124,6 +122,22 @@ function scrollToTop() {
           </div>
         </div>
       </div>
+
+      <!-- Contact details (visible, so people can read/copy them) -->
+      <address class="cf__contact">
+        <a :href="`mailto:${contact.email}`" class="cf__contact-item">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          {{ contact.email }}
+        </a>
+        <a :href="`tel:+${contact.whatsapp}`" class="cf__contact-item">
+          <SocialIcon name="whatsapp" />
+          {{ contact.phoneDisplay }}
+        </a>
+        <span class="cf__contact-item cf__contact-item--plain">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 21s7-5.7 7-11a7 7 0 1 0-14 0c0 5.3 7 11 7 11Z" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5"/></svg>
+          {{ contact.location }}
+        </span>
+      </address>
 
       <!-- Bottom bar -->
       <div class="cf__bottom">
@@ -200,6 +214,20 @@ function scrollToTop() {
   font-size: 26vw;
   line-height: 0.9;
 }
+
+/* Reveal: the observed elements (giant word, title, links) are visible by
+   default; the IntersectionObserver adds .is-in to replay a gentle entrance.
+   They can never get stuck invisible — key fix for SPA navigation. */
+.cf__giant,
+.cf__title,
+.cf__links {
+  transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .cf__giant:not(.is-in) { opacity: 0.001; transform: translateY(6vh) scale(0.9); }
+  .cf__title:not(.is-in),
+  .cf__links:not(.is-in) { opacity: 0.001; transform: translateY(28px); }
+}
 .cf__giant-text {
   font-family: var(--font-display);
   font-weight: 700; letter-spacing: -0.04em;
@@ -263,13 +291,33 @@ function scrollToTop() {
 .cf__pill:hover { color: #fff; border-color: rgba(255,255,255,0.25); background: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.03)); }
 .cf__pill--lg { padding: 1.05rem 2rem; font-size: 1rem; color: #fff; }
 
+/* Contact details (visible, readable) */
+.cf__contact {
+  position: relative; z-index: 20;
+  font-style: normal;
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 0.75rem 1.75rem;
+  width: 100%; padding: 0 1.5rem;
+  margin-top: 2.25rem;
+}
+.cf__contact-item {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-body); font-size: 0.92rem; font-weight: 500;
+  color: rgba(255, 255, 255, 0.78);
+  transition: color var(--dur);
+}
+.cf__contact-item svg { color: var(--color-accent-soft); flex: 0 0 auto; }
+a.cf__contact-item:hover { color: #fff; }
+a.cf__contact-item:hover svg { color: var(--color-accent); }
+.cf__contact-item--plain { cursor: default; }
+
 /* Bottom bar */
 .cf__bottom {
   position: relative; z-index: 20;
   display: flex; flex-direction: column; align-items: center; gap: 1.25rem;
   width: 100%; padding: 2rem 1.5rem;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 .cf__copy { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); text-align: center; }
 /* social icons sit below the action buttons, centered */

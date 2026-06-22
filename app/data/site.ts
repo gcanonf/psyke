@@ -12,7 +12,7 @@ export const site = {
 }
 
 export const contact = {
-  email: 'psyke.sas@gmail.com',
+  email: 'contacto@psyke.com.co',
   phoneDisplay: '+57 304 553 2521',
   // E.164 without symbols for wa.me / tel
   whatsapp: '573045532521',
