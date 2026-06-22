@@ -10,6 +10,7 @@ const routes = [
   { loc: '/cultura-del-cuidado', priority: '0.8', changefreq: 'monthly' },
   { loc: '/psicoeducacion', priority: '0.8', changefreq: 'monthly' },
   { loc: '/contacto', priority: '0.7', changefreq: 'yearly' },
+  { loc: '/privacidad', priority: '0.3', changefreq: 'yearly' },
 ]
 
 export default defineEventHandler((event) => {

@@ -10,6 +10,10 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        # Set NUXT_PUBLIC_GA_ID in Coolify's env (e.g. G-XXXXXXXXXX) to enable
+        # Google Analytics. Leave unset to keep analytics off.
+        - NUXT_PUBLIC_GA_ID=${NUXT_PUBLIC_GA_ID:-}
     restart: unless-stopped
     environment:
       # Coolify magic var: binds the generated/assigned domain to this

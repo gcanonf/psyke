@@ -141,7 +141,10 @@ function scrollToTop() {
 
       <!-- Bottom bar -->
       <div class="cf__bottom">
-        <div class="cf__copy">© {{ year }} {{ brand.legal }} · {{ brand.professional }}</div>
+        <div class="cf__copy">
+          © {{ year }} {{ brand.legal }} · {{ brand.professional }}
+          <NuxtLink to="/privacidad" class="cf__legal-link">Privacidad</NuxtLink>
+        </div>
 
         <button data-magnetic class="cf__top" aria-label="Volver arriba" @click="scrollToTop">
           <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -320,6 +323,8 @@ a.cf__contact-item:hover svg { color: var(--color-accent); }
   margin-top: 1.5rem;
 }
 .cf__copy { font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.45); text-align: center; }
+.cf__legal-link { color: rgba(255,255,255,0.6); margin-left: 0.6rem; transition: color var(--dur); }
+.cf__legal-link:hover { color: #fff; }
 /* social icons sit below the action buttons, centered */
 .cf__social { display: flex; gap: 0.7rem; justify-content: center; margin-top: 0.5rem; }
 .cf__social a {

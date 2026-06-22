@@ -7,6 +7,14 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
+  // Public runtime config — set NUXT_PUBLIC_GA_ID in Coolify (build env).
+  // When empty, analytics is skipped entirely.
+  runtimeConfig: {
+    public: {
+      gaId: '', // overridden by NUXT_PUBLIC_GA_ID at build time
+    },
+  },
+
   // Static site generation — deploy anywhere (Netlify/Vercel/GitHub Pages)
   ssr: true,
   nitro: {
