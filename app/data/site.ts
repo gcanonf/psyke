@@ -12,7 +12,7 @@ export const site = {
 }
 
 export const contact = {
-  email: 'contacto@psyke.com.co',
+  email: 'psyke.sas@gmail.com',
   phoneDisplay: '+57 304 553 2521',
   // E.164 without symbols for wa.me / tel
   whatsapp: '573045532521',
@@ -84,23 +84,13 @@ export const therapies: Therapy[] = [
     image: '/images/therapies/infantil.jpg',
   },
   {
-    id: 'pareja',
-    title: 'Terapia de pareja',
-    navLabel: 'Pareja',
-    phrase: 'Construyendo relaciones saludables',
+    id: 'grupal',
+    title: 'Psicoterapia grupal',
+    navLabel: 'Grupal',
+    phrase: 'Sanar en el encuentro con otros',
     short:
-      'Mejorar la comunicación, reparar vínculos y reencontrarse para construir una relación más sana y consciente.',
-    full: 'La terapia de pareja es un espacio para mejorar la comunicación, reparar vínculos y reencontrarse. Acompaño a las parejas a comprender sus dinámicas, gestionar los conflictos y reconstruir la confianza, con el fin de construir una relación más sana, consciente y satisfactoria para ambos.',
-    image: '/images/therapies/parejas.jpg',
-  },
-  {
-    id: 'familiar',
-    title: 'Terapia familiar',
-    navLabel: 'Familiar',
-    phrase: 'Creciendo juntos, superando desafíos',
-    short:
-      'Cuando las dinámicas familiares se tensan, la terapia ayuda a comprenderse y resolver conflictos juntos.',
-    full: 'Cuando las dinámicas familiares se tensan, la terapia familiar ayuda a comprenderse, comunicarse mejor y resolver conflictos. Trabajamos las relaciones y los roles dentro del sistema familiar para fortalecer los vínculos, recuperar el equilibrio y crecer juntos, superando los desafíos como familia.',
+      'Espacios terapéuticos para el autoconocimiento y la expresión emocional junto a otras personas que comparten procesos similares.',
+    full: 'Espacios terapéuticos diseñados para favorecer el autoconocimiento, la expresión emocional y el desarrollo de recursos personales a través del encuentro con otras personas que comparten procesos similares.',
     image: '/images/therapies/familiar.jpg',
   },
 ]

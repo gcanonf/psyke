@@ -41,8 +41,7 @@ const businessSchema = {
   availableService: [
     { '@type': 'MedicalTherapy', name: 'Psicoterapia individual' },
     { '@type': 'MedicalTherapy', name: 'EMDR · Terapia del trauma' },
-    { '@type': 'MedicalTherapy', name: 'Terapia de pareja' },
-    { '@type': 'MedicalTherapy', name: 'Terapia familiar' },
+    { '@type': 'MedicalTherapy', name: 'Psicoterapia grupal' },
     { '@type': 'MedicalTherapy', name: 'Terapia infantil y adolescente' },
     { '@type': 'Service', name: 'Talleres y conferencias de psicoeducación' },
   ],
@@ -73,7 +72,7 @@ const faqs = [
   },
   {
     q: '¿Qué tipos de terapia ofrece PSYKE?',
-    a: 'Psicoterapia para adultos, adolescentes e infantil, terapia de pareja, terapia familiar, EMDR para el trauma y terapia online. También ofrece talleres y conferencias de psicoeducación y cultura del cuidado para equipos y comunidades.',
+    a: 'Psicoterapia para adultos, adolescentes e infantil, psicoterapia grupal, EMDR para el trauma y atención online. También ofrece talleres y conferencias de psicoeducación y cultura del cuidado para equipos y comunidades.',
   },
   {
     q: '¿Cómo agendar una cita con PSYKE?',

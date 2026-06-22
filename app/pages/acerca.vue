@@ -11,24 +11,24 @@ useSeo({
 const education = [
   {
     initials: 'UBA',
-    institution: 'University of Buenos Aires',
+    institution: 'Universidad de Buenos Aires',
     degree: 'Maestría en Problemáticas Sociales Infanto-Juveniles',
-    year: '2024',
-    note: 'Materias completas y tesis sustentada; título en trámite.',
+    year: 'Grado 2025',
+    note: 'Título convalidado por el Min. de Educación Nacional (2026). Formación interdisciplinaria en prevención, intervención, docencia e investigación sobre problemáticas sociales de niños, niñas y jóvenes.',
   },
   {
     initials: 'UAM',
-    institution: 'Universidad Autónoma de Madrid',
+    institution: 'FLACSO Argentina · Universidad Autónoma de Madrid',
     degree: 'Maestría en Psicología Cognitiva y Aprendizaje',
     year: 'Doble titulación',
-    note: 'Maestría académica en doble titulación con FLACSO Argentina.',
+    note: 'Título convalidado por el Min. de Educación Nacional (2017). Procesos cognitivos y de aprendizaje en contextos educativos, sociales y organizacionales: memoria, atención, lenguaje, emociones, motivación y metacognición.',
   },
   {
-    initials: 'FL',
-    institution: 'FLACSO Argentina',
-    degree: 'Maestría en Psicología Cognitiva y Aprendizaje',
-    year: 'Doble titulación',
-    note: 'Estudio de los procesos cognitivos y de aprendizaje.',
+    initials: 'EMDR',
+    institution: 'IDAE / SEMPyP',
+    degree: 'Experto en Clínica e Intervención en Trauma con E.M.D.R.',
+    year: 'Especialización',
+    note: 'Formación avanzada en EMDR (Eye Movement Desensitization and Reprocessing) aplicada al trauma.',
   },
   {
     initials: 'KL',
@@ -142,6 +142,13 @@ const journey = [
             de procesos orientados al desarrollo de habilidades socioemocionales,
             la prevención de riesgos psicosociales y la promoción de la
             convivencia y el bienestar.
+          </p>
+          <p>
+            Desde la práctica clínica, incorporo un enfoque
+            cognitivo-conductual, con formación en terapia EMDR aplicada al
+            abordaje del trauma psicológico, la regulación emocional y el
+            procesamiento de experiencias adversas, integrando la dimensión
+            emocional, cognitiva y relacional en el acompañamiento terapéutico.
           </p>
           <blockquote class="quote">
             «En PSYKE, creo que cada persona y comunidad tiene el potencial de

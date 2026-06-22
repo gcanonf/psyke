@@ -3,13 +3,13 @@ import { therapies } from '~/data/site'
 useReveal()
 
 // These modalities render as full-bleed parallax bands with centered text.
-const parallaxIds = ['adolescentes', 'pareja']
+const parallaxIds = ['adolescentes', 'grupal']
 // Standard sections in this list are mirrored (image on the right).
 const mirrorIds = ['infantil']
 useSeo({
-  title: 'Modalidades de terapia · Adultos, parejas, familias y más | PSYKE',
+  title: 'Modalidades de terapia · Adultos, adolescentes, infantil y grupal | PSYKE',
   description:
-    'Conoce las modalidades de psicoterapia de PSYKE: terapia para adultos, adolescentes, infantil, de pareja, familiar y online. Acompañamiento cálido, online y presencial en Bogotá, Colombia.',
+    'Conoce las modalidades de psicoterapia de PSYKE: terapia para adultos, adolescentes, infantil y psicoterapia grupal. Acompañamiento cálido, online y presencial en Bogotá, Colombia.',
 })
 </script>
 
@@ -24,9 +24,9 @@ useSeo({
           <p class="eyebrow">Psicoterapia</p>
           <h1 class="hero__title">Modalidades de terapia</h1>
           <p class="hero__sub">
-            Acompaño distintos momentos y vínculos —para adultos, adolescentes,
-            niños, parejas y familias— de forma
-            <strong>presencial o&nbsp;online</strong>. Desde Colombia, sin importar
+            Acompaño distintos momentos y procesos —para adultos, adolescentes y
+            niños, de forma individual o grupal— de manera
+            <strong>presencial u&nbsp;online</strong>. Desde Colombia, sin importar
             dónde estés.
           </p>
           <a :href="`#${therapies[0].id}`" class="hero__scroll">
