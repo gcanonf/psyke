@@ -31,3 +31,6 @@ pnpm-debug.log*
 *.ntvs*
 *.njsproj
 *.sln
+
+# Local-only LaTeX business card (not part of the website)
+businesscard/
