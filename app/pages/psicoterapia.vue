@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { contact } from '~/data/site'
+import { contact, therapies } from '~/data/site'
 useReveal()
 useSeo({
   title: 'Psicoterapia online y presencial en Bogotá | PSYKE',
@@ -16,58 +16,6 @@ const processSteps = [
   { icon: 'target', title: 'Identificar objetivos terapéuticos' },
   { icon: 'evidence', title: 'Intervención con técnicas basadas en evidencia científica' },
   { icon: 'evaluate', title: 'Evaluación de resultados terapéuticos' },
-]
-
-// Therapy modalities shown as a gallery carousel
-interface Therapy {
-  title: string
-  phrase: string
-  description: string
-  image: string
-}
-const therapies: Therapy[] = [
-  {
-    title: 'Terapia para adultos',
-    phrase: 'Sanando el ayer, liberamos el hoy',
-    description:
-      'Acompañamiento individual para quienes atraviesan ansiedad, estrés, duelos o crisis vitales. Desde un enfoque cognitivo-conductual, con herramientas prácticas para avanzar hacia tu bienestar.',
-    image: '/images/therapies/adultos.jpg',
-  },
-  {
-    title: 'Terapia para adolescentes',
-    phrase: 'Acompañar sin juzgar',
-    description:
-      'Un espacio seguro y de confianza para expresarse sin sentirse juzgado, fortalecer la autoestima y construir herramientas para los retos propios de la adolescencia.',
-    image: '/images/therapies/adolescentes.jpg',
-  },
-  {
-    title: 'Terapia infantil',
-    phrase: 'Guiando a nuestros pequeños corazones',
-    description:
-      'Un acompañamiento cálido y lúdico para que los más pequeños expresen lo que sienten, gestionen sus emociones y crezcan con confianza y seguridad.',
-    image: '/images/therapies/infantil.jpg',
-  },
-  {
-    title: 'Terapia de pareja',
-    phrase: 'Construyendo relaciones saludables',
-    description:
-      'Un espacio para mejorar la comunicación, reparar vínculos y reencontrarse. Acompaño a las parejas a comprenderse y construir una relación más sana y consciente.',
-    image: '/images/therapies/parejas.jpg',
-  },
-  {
-    title: 'Terapia familiar',
-    phrase: 'Creciendo juntos, superando desafíos',
-    description:
-      'Cuando las dinámicas familiares se tensan, la terapia ayuda a comprenderse, comunicarse mejor y resolver conflictos para crecer como familia.',
-    image: '/images/therapies/familiar.jpg',
-  },
-  {
-    title: 'Terapia online',
-    phrase: 'Apoyo cercano, desde cualquier lugar',
-    description:
-      'El mismo acompañamiento cálido, sin importar dónde estés. Horarios flexibles y sin límites geográficos: solo necesitas un espacio tranquilo y un dispositivo.',
-    image: '/images/therapies/online.jpg',
-  },
 ]
 
 // Carousel (CSS scroll-snap + arrow / dot nav)
@@ -219,7 +167,7 @@ function onTrackScroll() {
 
       <div class="container">
         <div ref="trackEl" class="gallery__track" @scroll.passive="onTrackScroll">
-          <article v-for="t in therapies" :key="t.title" class="gallery__card">
+          <article v-for="t in therapies" :key="t.id" class="gallery__card">
             <div class="gallery__media">
               <NuxtImg
                 :src="t.image"
@@ -234,7 +182,15 @@ function onTrackScroll() {
             <div class="gallery__content">
               <p class="gallery__phrase">«{{ t.phrase }}»</p>
               <h3 class="gallery__title">{{ t.title }}</h3>
-              <p class="gallery__text">{{ t.description }}</p>
+              <p class="gallery__text">{{ t.short }}</p>
+              <NuxtLink
+                :to="`/modalidades#${t.id}`"
+                class="gallery__more"
+                :aria-label="`Más información sobre ${t.title}`"
+              >
+                Más información
+                <span aria-hidden="true">→</span>
+              </NuxtLink>
             </div>
           </article>
         </div>
@@ -242,7 +198,7 @@ function onTrackScroll() {
         <div class="gallery__dots" role="tablist" aria-label="Modalidades">
           <button
             v-for="(t, i) in therapies"
-            :key="t.title"
+            :key="t.id"
             class="gallery__dot"
             :class="{ 'gallery__dot--on': activeSlide === i }"
             :aria-label="`Ver ${t.title}`"
@@ -454,6 +410,15 @@ function onTrackScroll() {
 .gallery__phrase { font-family: var(--font-display); font-style: italic; color: var(--color-accent); margin-bottom: 0.35rem; font-size: 0.95rem; }
 .gallery__title { font-size: var(--step-1); color: var(--color-primary); margin-bottom: 0.55rem; }
 .gallery__text { font-size: 0.9rem; line-height: 1.5; color: var(--color-ink-soft); }
+.gallery__more {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  margin-top: 0.9rem; font-size: 0.85rem; font-weight: 600;
+  color: var(--color-primary); text-decoration: none;
+  transition: gap var(--dur), color var(--dur);
+}
+.gallery__more span { transition: transform var(--dur); }
+.gallery__more:hover { color: var(--color-accent); }
+.gallery__more:hover span { transform: translateX(4px); }
 
 .gallery__dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 1.5rem; }
 .gallery__dot {

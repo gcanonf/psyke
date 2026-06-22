@@ -6,6 +6,7 @@ const routes = [
   { loc: '/', priority: '1.0', changefreq: 'monthly' },
   { loc: '/acerca', priority: '0.8', changefreq: 'yearly' },
   { loc: '/psicoterapia', priority: '0.9', changefreq: 'monthly' },
+  { loc: '/modalidades', priority: '0.8', changefreq: 'monthly' },
   { loc: '/emdr', priority: '0.9', changefreq: 'monthly' },
   { loc: '/cultura-del-cuidado', priority: '0.8', changefreq: 'monthly' },
   { loc: '/psicoeducacion', priority: '0.8', changefreq: 'monthly' },

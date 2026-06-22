@@ -37,12 +37,85 @@ export const brand = {
 export interface NavItem {
   label: string
   to: string
+  children?: NavItem[]
 }
+
+// Therapy modalities — shared by the Psicoterapia carousel, the /modalidades
+// page (each `id` is an anchor there), and the nav dropdown.
+export interface Therapy {
+  id: string
+  title: string
+  navLabel: string
+  phrase: string
+  short: string // carousel teaser
+  full: string // /modalidades page
+  image: string
+}
+
+export const therapies: Therapy[] = [
+  {
+    id: 'adultos',
+    title: 'Terapia para adultos',
+    navLabel: 'Adultos',
+    phrase: 'Sanando el ayer, liberamos el hoy',
+    short:
+      'Acompañamiento individual para quienes atraviesan ansiedad, estrés, duelos o crisis vitales, desde un enfoque cognitivo-conductual.',
+    full: 'La terapia para adultos es un espacio de acompañamiento individual para quienes atraviesan ansiedad, estrés, duelos, crisis vitales o dificultades en sus relaciones. Trabajamos desde un enfoque cognitivo-conductual, con herramientas prácticas para comprender lo que sientes, regular tus emociones y avanzar hacia tu bienestar y desarrollo personal, a tu propio ritmo.',
+    image: '/images/therapies/adultos.jpg',
+  },
+  {
+    id: 'adolescentes',
+    title: 'Terapia para adolescentes',
+    navLabel: 'Adolescentes',
+    phrase: 'Acompañar sin juzgar',
+    short:
+      'Un espacio seguro para expresarse sin sentirse juzgado y afrontar los retos propios de la adolescencia.',
+    full: 'La adolescencia trae cambios, preguntas y emociones intensas. Ofrezco un espacio seguro y de confianza donde el o la adolescente puede expresarse sin sentirse juzgado, fortalecer su autoestima, gestionar la ansiedad y construir herramientas para relacionarse y tomar decisiones con mayor claridad y seguridad.',
+    image: '/images/therapies/adolescentes.jpg',
+  },
+  {
+    id: 'infantil',
+    title: 'Terapia infantil',
+    navLabel: 'Infantil',
+    phrase: 'Guiando a nuestros pequeños corazones',
+    short:
+      'Un acompañamiento cálido y lúdico para que los más pequeños expresen lo que sienten y crezcan con seguridad.',
+    full: 'A través del juego y de actividades adaptadas a su edad, acompaño a los más pequeños a expresar lo que sienten, comprender y gestionar sus emociones y desarrollar habilidades sociales. Un espacio cálido y seguro que también orienta a madres, padres y cuidadores para fortalecer el bienestar de toda la familia.',
+    image: '/images/therapies/infantil.jpg',
+  },
+  {
+    id: 'pareja',
+    title: 'Terapia de pareja',
+    navLabel: 'Pareja',
+    phrase: 'Construyendo relaciones saludables',
+    short:
+      'Mejorar la comunicación, reparar vínculos y reencontrarse para construir una relación más sana y consciente.',
+    full: 'La terapia de pareja es un espacio para mejorar la comunicación, reparar vínculos y reencontrarse. Acompaño a las parejas a comprender sus dinámicas, gestionar los conflictos y reconstruir la confianza, con el fin de construir una relación más sana, consciente y satisfactoria para ambos.',
+    image: '/images/therapies/parejas.jpg',
+  },
+  {
+    id: 'familiar',
+    title: 'Terapia familiar',
+    navLabel: 'Familiar',
+    phrase: 'Creciendo juntos, superando desafíos',
+    short:
+      'Cuando las dinámicas familiares se tensan, la terapia ayuda a comprenderse y resolver conflictos juntos.',
+    full: 'Cuando las dinámicas familiares se tensan, la terapia familiar ayuda a comprenderse, comunicarse mejor y resolver conflictos. Trabajamos las relaciones y los roles dentro del sistema familiar para fortalecer los vínculos, recuperar el equilibrio y crecer juntos, superando los desafíos como familia.',
+    image: '/images/therapies/familiar.jpg',
+  },
+]
 
 export const nav: NavItem[] = [
   { label: 'Inicio', to: '/' },
   { label: 'Sobre mí', to: '/acerca' },
-  { label: 'Psicoterapia', to: '/psicoterapia' },
+  {
+    label: 'Psicoterapia',
+    to: '/psicoterapia',
+    children: therapies.map((t) => ({
+      label: t.navLabel,
+      to: `/modalidades#${t.id}`,
+    })),
+  },
   { label: 'EMDR', to: '/emdr' },
   { label: 'Cultura del Cuidado', to: '/cultura-del-cuidado' },
   { label: 'Psicoeducación', to: '/psicoeducacion' },
