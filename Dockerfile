@@ -18,10 +18,9 @@ WORKDIR /app
 COPY package.json pnpm-lock.yaml .npmrc ./
 RUN pnpm install --frozen-lockfile
 
-# Google Analytics id — baked in at build time (SSG). Set in Coolify as a
-# build argument / env var. Empty by default → analytics stays off.
-ARG NUXT_PUBLIC_GA_ID=""
-ENV NUXT_PUBLIC_GA_ID=$NUXT_PUBLIC_GA_ID
+# Google Analytics id is baked in via nuxt.config.ts (gaId). We deliberately do
+# NOT pass NUXT_PUBLIC_GA_ID here — an empty env var would override and wipe out
+# the config default. To change the id, edit nuxt.config.ts.
 
 # Build the static site
 COPY . .

@@ -14,8 +14,6 @@ declare global {
 
 export default defineNuxtPlugin(() => {
   const gaId = useRuntimeConfig().public.gaId as string
-  // eslint-disable-next-line no-console
-  console.info('[consent] plugin init, gaId =', gaId)
 
   // ── Google Consent Mode v2: default everything to denied ──────────
   window.dataLayer = window.dataLayer || []
@@ -46,8 +44,6 @@ export default defineNuxtPlugin(() => {
   // grant/deny analytics based on the consent state
   function syncConsent() {
     const granted = CookieConsent.acceptedCategory('analytics')
-    // eslint-disable-next-line no-console
-    console.info('[consent] analytics granted:', granted)
     window.gtag('consent', 'update', {
       analytics_storage: granted ? 'granted' : 'denied',
     })
