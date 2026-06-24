@@ -130,7 +130,7 @@ export const services: Service[] = [
     description:
       'Atención clínica cálida y humanizada, con tratamientos respaldados científicamente desde un enfoque cognitivo-conductual. Sin límites geográficos y con horarios flexibles.',
     image: '/images/services/psicoterapia.jpg',
-    imageAlt: 'Profesional cálida y cercana en un espacio de acompañamiento',
+    imageAlt: 'Ilustración de una mente en reflexión que busca su rumbo, símbolo del proceso terapéutico',
   },
   {
     slug: 'emdr',
