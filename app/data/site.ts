@@ -13,9 +13,9 @@ export const site = {
 
 export const contact = {
   email: 'psyke.sas@gmail.com',
-  phoneDisplay: '+57 304 553 2521',
-  // E.164 without symbols for wa.me / tel
-  whatsapp: '573045532521',
+  // Appointments are arranged through the Google booking page (preinscripción);
+  // PSYKE then confirms by WhatsApp. Phone/WhatsApp are intentionally not shown.
+  booking: 'https://calendar.app.google/EM1gw8T7uRV6RJfv5',
   location: 'Bogotá, Colombia',
   social: {
     facebook: 'https://www.facebook.com/psyke.sas/',

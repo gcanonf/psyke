@@ -7,8 +7,8 @@ useSeo({
     'Talleres y conferencias de bienestar para equipos y comunidades en Colombia: autoliderazgo, comunicación, resiliencia, gestión del tiempo, negociación y equilibrio integral. A la medida de tu organización.',
 })
 
-const waLink = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(
-  'Hola, me gustaría conocer los talleres de Cultura del Cuidado de PSYKE.',
+const mailLink = `mailto:${contact.email}?subject=${encodeURIComponent(
+  'Talleres de Cultura del Cuidado',
 )}`
 </script>
 
@@ -34,7 +34,7 @@ const waLink = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(
           emocional, para construir entornos más sanos y productivos.
         </p>
         <div class="shader-hero__actions reveal" data-reveal-delay="240">
-          <a :href="waLink" target="_blank" rel="noopener" class="btn btn--accent">
+          <a :href="mailLink" class="btn btn--accent">
             Solicita información
           </a>
         </div>

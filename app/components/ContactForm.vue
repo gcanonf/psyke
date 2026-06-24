@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { contact } from '~/data/site'
 
+const bookingLink = contact.booking
 const name = ref('')
 const email = ref('')
 const topic = ref('Psicoterapia')
 const message = ref('')
-const channel = ref<'whatsapp' | 'email'>('whatsapp')
 const errors = ref<Record<string, string>>({})
 
 const topics = [
@@ -19,7 +19,7 @@ const topics = [
 function validate() {
   const e: Record<string, string> = {}
   if (!name.value.trim()) e.name = 'Por favor escribe tu nombre.'
-  if (channel.value === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value))
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value))
     e.email = 'Escribe un correo válido para responderte.'
   if (!message.value.trim()) e.message = 'Cuéntanos brevemente en qué te podemos acompañar.'
   errors.value = e
@@ -46,18 +46,10 @@ function submit() {
     return
   }
   const text = composeText()
-  if (channel.value === 'whatsapp') {
-    window.open(
-      `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(text)}`,
-      '_blank',
-      'noopener',
-    )
-  } else {
-    const subject = `Cita PSYKE — ${topic.value} — ${name.value.trim()}`
-    window.location.href = `mailto:${contact.email}?subject=${encodeURIComponent(
-      subject,
-    )}&body=${encodeURIComponent(text)}`
-  }
+  const subject = `Cita PSYKE — ${topic.value} — ${name.value.trim()}`
+  window.location.href = `mailto:${contact.email}?subject=${encodeURIComponent(
+    subject,
+  )}&body=${encodeURIComponent(text)}`
 }
 </script>
 
@@ -79,7 +71,7 @@ function submit() {
       </label>
 
       <label class="field">
-        <span class="field__label">Correo electrónico</span>
+        <span class="field__label">Correo electrónico <span aria-hidden="true">*</span></span>
         <input
           id="field-email"
           v-model="email"
@@ -114,25 +106,12 @@ function submit() {
       <span v-if="errors.message" id="err-message" class="field__error" role="alert">{{ errors.message }}</span>
     </label>
 
-    <fieldset class="channel">
-      <legend class="field__label">Quiero que me contacten por</legend>
-      <div class="channel__options">
-        <label class="chip" :class="{ 'chip--on': channel === 'whatsapp' }">
-          <input v-model="channel" type="radio" value="whatsapp" name="channel" />
-          WhatsApp
-        </label>
-        <label class="chip" :class="{ 'chip--on': channel === 'email' }">
-          <input v-model="channel" type="radio" value="email" name="channel" />
-          Correo
-        </label>
-      </div>
-    </fieldset>
-
     <button type="submit" class="btn btn--primary form__submit">
-      {{ channel === 'whatsapp' ? 'Enviar por WhatsApp' : 'Enviar por correo' }}
+      Enviar por correo
     </button>
     <p class="form__note">
-      Tu mensaje se abrirá en {{ channel === 'whatsapp' ? 'WhatsApp' : 'tu correo' }} con los datos ya escritos.
+      Tu mensaje se abrirá en tu correo con los datos ya escritos. También puedes
+      <a :href="bookingLink" target="_blank" rel="noopener">agendar tu cita en línea</a>.
     </p>
   </form>
 </template>

@@ -9,9 +9,7 @@ useSeo({
     'Psicoterapia, EMDR y bienestar emocional con la psicóloga Eva Margarita Cañón Falla. Atención online y presencial en Bogotá, Colombia. Agenda tu cita: cuidar tu salud mental es cuidar tu vida.',
 })
 
-const waLink = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(
-  'Hola, me gustaría agendar una cita con PSYKE.',
-)}`
+const bookingLink = contact.booking
 
 // Split the reasons around the central image (about-us style layout)
 const whyLeft = whyTherapy.slice(0, Math.ceil(whyTherapy.length / 2))
@@ -64,7 +62,7 @@ const sello = [
             {{ brand.professional }}.
           </p>
           <div class="hero__actions reveal" data-reveal-delay="240">
-            <a :href="waLink" target="_blank" rel="noopener" class="btn btn--accent">
+            <a :href="bookingLink" target="_blank" rel="noopener" class="btn btn--accent">
               Agenda tu primera cita
             </a>
             <NuxtLink to="/psicoterapia" class="btn btn--ghost">Conoce el proceso</NuxtLink>

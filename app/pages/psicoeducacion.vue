@@ -7,8 +7,8 @@ useSeo({
     'Talleres y conferencias de psicoeducación en Colombia que integran psicología, educación y trabajo comunitario para fortalecer la salud mental sin estigmas, en instituciones, empresas y comunidades.',
 })
 
-const waLink = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(
-  'Hola, me gustaría conocer las charlas y talleres de Psicoeducación de PSYKE.',
+const mailLink = `mailto:${contact.email}?subject=${encodeURIComponent(
+  'Charlas y talleres de Psicoeducación',
 )}`
 
 const parallaxEl = ref<HTMLElement | null>(null)
@@ -42,7 +42,7 @@ const formats = [
           personas y grupos en el descubrimiento de herramientas prácticas.
         </p>
         <div class="shader-hero__actions reveal" data-reveal-delay="240">
-          <a :href="waLink" target="_blank" rel="noopener" class="btn btn--accent">
+          <a :href="mailLink" class="btn btn--accent">
             Solicita una charla
           </a>
         </div>

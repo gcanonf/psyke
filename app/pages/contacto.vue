@@ -4,12 +4,10 @@ useReveal()
 useSeo({
   title: 'Contacto · Agenda tu cita de psicología | PSYKE Bogotá',
   description:
-    'Agenda tu cita con PSYKE por WhatsApp o correo electrónico. Psicoterapia y EMDR, atención online y presencial desde Bogotá, Colombia.',
+    'Agenda tu cita con PSYKE en línea o escríbeme por correo electrónico. Psicoterapia y EMDR, atención online y presencial desde Bogotá, Colombia.',
 })
 
-const waLink = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(
-  'Hola, me gustaría agendar una cita con PSYKE.',
-)}`
+const bookingLink = contact.booking
 </script>
 
 <template>
@@ -17,7 +15,7 @@ const waLink = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(
     <PageHero
       eyebrow="Contacto"
       title="Agenda tu cita"
-      lede="Estoy aquí para acompañarte. Escríbeme por WhatsApp o correo, o déjame tus datos y te contacto."
+      lede="Estoy aquí para acompañarte. Agenda tu cita en línea o escríbeme por correo y te contacto por WhatsApp para confirmar."
     />
 
     <section class="section">
@@ -26,10 +24,12 @@ const waLink = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(
           <h2 class="contact__h">Hablemos</h2>
           <ul class="contact__list">
             <li>
-              <span class="contact__ico"><SocialIcon name="whatsapp" /></span>
+              <span class="contact__ico">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none"><rect x="3" y="4.5" width="18" height="16" rx="2.5" stroke="currentColor" stroke-width="1.6"/><path d="M3 9h18M8 2.5v4M16 2.5v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              </span>
               <div>
-                <span class="contact__label">WhatsApp</span>
-                <a :href="waLink" target="_blank" rel="noopener">{{ contact.phoneDisplay }}</a>
+                <span class="contact__label">Agendar cita</span>
+                <a :href="bookingLink" target="_blank" rel="noopener">Reserva en línea</a>
               </div>
             </li>
             <li>

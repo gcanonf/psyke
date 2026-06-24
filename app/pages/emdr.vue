@@ -7,9 +7,7 @@ useSeo({
     'EMDR en Bogotá con Eva Margarita Cañón Falla, especialista en trauma. Enfoque validado científicamente para reprocesar recuerdos dolorosos: trauma, ansiedad, fobias y bloqueos. Online y presencial en Colombia.',
 })
 
-const waLink = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(
-  'Hola, me gustaría agendar una sesión de EMDR con PSYKE.',
-)}`
+const bookingLink = contact.booking
 
 // The 8 phases of the EMDR protocol
 const phases = [
@@ -68,7 +66,7 @@ const firstSession = [
           fobias y bloqueos emocionales.
         </p>
         <div class="shader-hero__actions reveal" data-reveal-delay="240">
-          <a :href="waLink" target="_blank" rel="noopener" class="btn btn--accent">
+          <a :href="bookingLink" target="_blank" rel="noopener" class="btn btn--accent">
             Agendar una sesión de EMDR
           </a>
         </div>

@@ -7,9 +7,7 @@ useSeo({
     'Psicoterapia para adultos, adolescentes y niños, y psicoterapia grupal, con enfoque cognitivo-conductual. Atención cálida online y presencial en Bogotá, Colombia. Agenda tu primera sesión.',
 })
 
-const waLink = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(
-  'Hola, me gustaría agendar una cita de psicoterapia con PSYKE.',
-)}`
+const bookingLink = contact.booking
 
 const processSteps = [
   { icon: 'start', title: 'Inicio del proceso terapéutico' },
@@ -78,7 +76,7 @@ function onTrackScroll() {
           geográficos y con horarios flexibles.
         </p>
         <div class="shader-hero__actions reveal" data-reveal-delay="240">
-          <a :href="waLink" target="_blank" rel="noopener" class="btn btn--accent">
+          <a :href="bookingLink" target="_blank" rel="noopener" class="btn btn--accent">
             Agendar cita
           </a>
         </div>

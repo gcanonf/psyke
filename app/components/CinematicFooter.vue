@@ -9,9 +9,7 @@ const links = ref<HTMLElement | null>(null)
 
 const year = new Date().getFullYear()
 
-const waLink = `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(
-  'Hola, me gustaría agendar una cita con PSYKE.',
-)}`
+const bookingLink = contact.booking
 const mailLink = `mailto:${contact.email}?subject=${encodeURIComponent('Cita PSYKE')}`
 
 // Magnetic pull — gentle (original used 0.4 / scale 1.05; softened here)
@@ -105,9 +103,9 @@ function scrollToTop() {
 
         <div ref="links" class="cf__links">
           <div class="cf__pills cf__pills--primary">
-            <a :href="waLink" target="_blank" rel="noopener" data-magnetic class="cf__pill cf__pill--lg">
-              <SocialIcon name="whatsapp" />
-              Agendar por WhatsApp
+            <a :href="bookingLink" target="_blank" rel="noopener" data-magnetic class="cf__pill cf__pill--lg">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2.5" stroke="currentColor" stroke-width="1.6"/><path d="M3 9h18M8 2.5v4M16 2.5v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+              Agendar cita
             </a>
             <a :href="mailLink" data-magnetic class="cf__pill cf__pill--lg">
               <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="1.6"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -128,10 +126,6 @@ function scrollToTop() {
         <a :href="`mailto:${contact.email}`" class="cf__contact-item">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M4 6h16v12H4z"/><path d="m4 7 8 6 8-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
           {{ contact.email }}
-        </a>
-        <a :href="`tel:+${contact.whatsapp}`" class="cf__contact-item">
-          <SocialIcon name="whatsapp" />
-          {{ contact.phoneDisplay }}
         </a>
         <span class="cf__contact-item cf__contact-item--plain">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M12 21s7-5.7 7-11a7 7 0 1 0-14 0c0 5.3 7 11 7 11Z" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.5"/></svg>

@@ -52,12 +52,7 @@ watch(
   },
 )
 
-const waLink = computed(
-  () =>
-    `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(
-      'Hola, me gustaría agendar una cita con PSYKE.',
-    )}`,
-)
+const bookingLink = contact.booking
 </script>
 
 <template>
@@ -124,7 +119,7 @@ const waLink = computed(
         </template>
       </nav>
 
-      <a :href="waLink" target="_blank" rel="noopener" class="btn btn--accent header__cta">
+      <a :href="bookingLink" target="_blank" rel="noopener" class="btn btn--accent header__cta">
         Agendar cita
       </a>
 
@@ -165,7 +160,7 @@ const waLink = computed(
             {{ child.label }}
           </NuxtLink>
         </template>
-        <a :href="waLink" target="_blank" rel="noopener" class="btn btn--accent mobile-nav__cta">
+        <a :href="bookingLink" target="_blank" rel="noopener" class="btn btn--accent mobile-nav__cta">
           Agendar cita
         </a>
       </nav>

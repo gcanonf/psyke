@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { brand, contact, site } from '~/data/site'
 
-const phone = `+${contact.whatsapp}`
 const sameAs = [contact.social.instagram, contact.social.facebook, contact.social.linkedin]
 
 // ── Organization / Psychologist (local business) schema ──────────────
@@ -18,7 +17,6 @@ const businessSchema = {
   image: `${site.url}/og-image.jpg`,
   logo: `${site.url}/logo.svg`,
   email: contact.email,
-  telephone: phone,
   priceRange: '$$',
   inLanguage: 'es-CO',
   knowsLanguage: ['es', 'en'],
@@ -76,7 +74,7 @@ const faqs = [
   },
   {
     q: '¿Cómo agendar una cita con PSYKE?',
-    a: `Puedes agendar escribiendo por WhatsApp al ${contact.phoneDisplay} o al correo ${contact.email}. La atención es online y presencial desde Bogotá, Colombia.`,
+    a: `Puedes agendar tu cita en línea desde la página de PSYKE o escribir al correo ${contact.email}. Tras la preinscripción, PSYKE te contacta para confirmar. La atención es online y presencial desde Bogotá, Colombia.`,
   },
 ]
 
