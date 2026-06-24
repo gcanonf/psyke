@@ -7,11 +7,12 @@ export default defineNuxtConfig({
 
   css: ['~/assets/css/main.css'],
 
-  // Public runtime config — set NUXT_PUBLIC_GA_ID in Coolify (build env).
-  // When empty, analytics is skipped entirely.
+  // Public runtime config. GA4 id is baked in here; NUXT_PUBLIC_GA_ID can
+  // override it at build time (e.g. in Coolify). Empty → analytics skipped.
+  // GA only loads after the visitor accepts analytics cookies (consent-gated).
   runtimeConfig: {
     public: {
-      gaId: '', // overridden by NUXT_PUBLIC_GA_ID at build time
+      gaId: 'G-VJQJE35SPC',
     },
   },
 
