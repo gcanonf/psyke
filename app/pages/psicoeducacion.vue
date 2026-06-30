@@ -15,15 +15,16 @@ const mailLink = `mailto:${contact.email}?subject=${encodeURIComponent(
 const parallaxEl = ref<HTMLElement | null>(null)
 useParallax(parallaxEl, 0.2)
 
+// Each topic gets a simple line-icon (paths drawn inline in the template)
 const topics = [
-  'Salud mental sin estigmas',
-  'Inteligencia emocional',
-  'Crianza con vínculo',
-  'Duelo y pérdida',
-  'Estrés y ansiedad',
-  'Habilidades socioemocionales',
-  'El autocuidado que nadie te enseñó',
-  'Trauma y resiliencia',
+  { label: 'Salud mental sin estigmas', icon: 'brain' },
+  { label: 'Inteligencia emocional', icon: 'heart' },
+  { label: 'Crianza con vínculo', icon: 'family' },
+  { label: 'Duelo y pérdida', icon: 'leaf' },
+  { label: 'Estrés y ansiedad', icon: 'wave' },
+  { label: 'Habilidades socioemocionales', icon: 'spark' },
+  { label: 'El autocuidado que nadie te enseñó', icon: 'self' },
+  { label: 'Trauma y resiliencia', icon: 'shield' },
 ]
 </script>
 
@@ -68,25 +69,41 @@ const topics = [
     <!-- Qué es / Para quién -->
     <section class="section intro">
       <div class="container intro__grid">
-        <div class="intro__block reveal">
-          <h2 class="h2">Qué es</h2>
-          <p class="prose-p">
+        <article class="card intro__card reveal">
+          <span class="intro__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3a7 7 0 0 0-4 12.7V18a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.3A7 7 0 0 0 12 3Z" />
+              <path d="M9.5 22h5" />
+            </svg>
+          </span>
+          <p class="intro__eyebrow">El espacio</p>
+          <h2 class="intro__title">Qué es</h2>
+          <p class="intro__text">
             Espacios de aprendizaje donde el conocimiento psicológico se convierte
             en herramientas reales para la vida cotidiana. No es terapia. Es
             entenderte mejor. Me gusta pensar en estos espacios como faros:
             lugares donde aprendemos juntos a mirarnos con más claridad, más
             compasión y menos estigma.
           </p>
-        </div>
-        <div class="intro__block reveal" data-reveal-delay="120">
-          <h2 class="h2">Para quién</h2>
-          <p class="prose-p">
+        </article>
+        <article class="card intro__card reveal" data-reveal-delay="120">
+          <span class="intro__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="8" r="3" />
+              <path d="M2 20c0-3.3 3.1-5 7-5s7 1.7 7 5" />
+              <path d="M16 7.5a2.5 2.5 0 0 1 0 5" />
+              <path d="M18 15.2c2.4.6 4 2 4 4.3" />
+            </svg>
+          </span>
+          <p class="intro__eyebrow">Las personas</p>
+          <h2 class="intro__title">Para quién</h2>
+          <p class="intro__text">
             Para personas, familias, docentes, cuidadores y grupos comunitarios
             que quieren comprender sus emociones y construir una vida con más
             bienestar. Online en español para colombianos e hispanohablantes en
             cualquier parte del mundo.
           </p>
-        </div>
+        </article>
       </div>
     </section>
 
@@ -101,14 +118,49 @@ const topics = [
             sin importar dónde estés, podemos trabajar juntos.
           </p>
         </header>
+        <!-- shared icon sprite (defined once, referenced via <use>) -->
+        <svg width="0" height="0" class="topics__sprite" aria-hidden="true" focusable="false">
+          <defs>
+            <g id="ic-brain" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9.5 4A2.5 2.5 0 0 0 7 6.5 2.5 2.5 0 0 0 5 9a2.5 2.5 0 0 0 1 2 2.5 2.5 0 0 0 0 4 2.5 2.5 0 0 0 2.5 2.5A2 2 0 0 0 12 19V5a1.5 1.5 0 0 0-2.5-1Z" />
+              <path d="M14.5 4A2.5 2.5 0 0 1 17 6.5 2.5 2.5 0 0 1 19 9a2.5 2.5 0 0 1-1 2 2.5 2.5 0 0 1 0 4 2.5 2.5 0 0 1-2.5 2.5A2 2 0 0 1 12 19" />
+            </g>
+            <g id="ic-heart" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 20s-6.5-4.3-9-9a4.5 4.5 0 0 1 8-3 4.5 4.5 0 0 1 8 3c-2.5 4.7-7 9-7 9Z" />
+            </g>
+            <g id="ic-family" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="8" cy="7" r="2.4" /><circle cx="16" cy="7" r="2.4" />
+              <path d="M3.5 19c0-2.7 2-4.5 4.5-4.5S12.5 16.3 12.5 19M11.5 19c0-2.7 2-4.5 4.5-4.5s4.5 1.8 4.5 4.5" />
+            </g>
+            <g id="ic-leaf" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 19c0-8 6-14 14-14 0 8-6 14-14 14Z" /><path d="M5 19c3-5 6-7 10-9" />
+            </g>
+            <g id="ic-wave" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 9c2-3 4-3 6 0s4 3 6 0 4-3 6 0M3 15c2-3 4-3 6 0s4 3 6 0 4-3 6 0" />
+            </g>
+            <g id="ic-spark" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M18.4 5.6l-2.8 2.8M8.4 15.6l-2.8 2.8" />
+            </g>
+            <g id="ic-self" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="3.2" /><path d="M5.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6" />
+            </g>
+            <g id="ic-shield" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3l7 3v5c0 4.4-3 8.2-7 10-4-1.8-7-5.6-7-10V6l7-3Z" /><path d="m9 12 2 2 4-4" />
+            </g>
+          </defs>
+        </svg>
+
         <ul class="topics__grid">
           <li
             v-for="(t, i) in topics"
-            :key="t"
+            :key="t.label"
             class="card topic__card reveal"
             :data-reveal-delay="(i % 4) * 70"
           >
-            {{ t }}
+            <span class="topic__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="24" height="24"><use :href="`#ic-${t.icon}`" /></svg>
+            </span>
+            <span class="topic__label">{{ t.label }}</span>
           </li>
         </ul>
       </div>
@@ -229,23 +281,71 @@ const topics = [
 .h2 { font-size: var(--step-3); margin-bottom: 1rem; }
 .prose-p { color: var(--color-ink-soft); }
 .head--center { text-align: center; max-width: 42rem; margin: 0 auto clamp(2rem, 1.5rem + 2vw, 3rem); }
-.intro__grid { display: grid; gap: 2rem; align-items: start; }
-.intro__block .h2 { font-size: var(--step-2); }
-@media (min-width: 720px) { .intro__grid { grid-template-columns: 1fr 1fr; gap: 3rem; } }
+.intro__grid { display: grid; gap: 1.5rem; align-items: stretch; }
+.intro__card {
+  position: relative;
+  padding: clamp(1.75rem, 1.4rem + 2vw, 2.75rem);
+  overflow: hidden;
+  transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+}
+.intro__card::before {
+  content: '';
+  position: absolute; inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(to bottom, var(--color-primary), var(--color-accent));
+}
+.intro__card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.intro__icon {
+  display: grid; place-items: center;
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+  margin-bottom: 1.1rem;
+}
+.intro__eyebrow {
+  font-family: var(--font-body); font-weight: 600;
+  font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--color-accent); margin-bottom: 0.35rem;
+}
+.intro__title { font-family: var(--font-display); font-size: var(--step-2); margin-bottom: 0.7rem; }
+.intro__text { color: var(--color-ink-soft); line-height: 1.6; }
+@media (min-width: 720px) { .intro__grid { grid-template-columns: 1fr 1fr; gap: 2rem; } }
 
 /* ---- Temas grid ---- */
 .topics-sec { background: var(--color-surface-alt); }
+.topics__sprite { position: absolute; width: 0; height: 0; }
 .topics__grid { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; grid-template-columns: 1fr; }
 .topic__card {
-  padding: 1.25rem 1.4rem;
-  font-weight: 600;
-  color: var(--color-primary);
-  line-height: 1.4;
-  transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+  display: flex; align-items: center; gap: 0.9rem;
+  padding: 1.15rem 1.3rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out), border-color var(--dur);
+  border: 1px solid transparent;
 }
-.topic__card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+.topic__icon {
+  flex: 0 0 auto;
+  display: grid; place-items: center;
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+  transition: background var(--dur), color var(--dur), transform var(--dur) var(--ease-out);
+}
+.topic__label { font-weight: 600; color: var(--color-ink); line-height: 1.35; }
+.topic__card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+  border-color: var(--color-primary-tint);
+}
+.topic__card:hover .topic__icon {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  transform: scale(1.05);
+}
 @media (min-width: 640px) { .topics__grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 980px) { .topics__grid { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 1040px) { .topics__grid { grid-template-columns: repeat(4, 1fr); } }
 
 /* ---- CTA + differentiator link ---- */
 .feature { background: var(--color-surface-alt); }

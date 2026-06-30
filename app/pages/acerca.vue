@@ -333,8 +333,10 @@ const journey = [
 /* On mobile keep the portrait compact and centred so it doesn't dominate */
 .about-media {
   border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow);
-  aspect-ratio: 9 / 11;
-  width: min(72%, 18rem);
+  /* match the portrait's native ratio (863×885 ≈ square) so the PSYKE
+     wordmark on the left edge is never cropped by object-fit: cover */
+  aspect-ratio: 863 / 885;
+  width: min(80%, 22rem);
   margin-inline: auto;
 }
 .about-media :deep(img) { width: 100%; height: 100%; object-fit: cover; }

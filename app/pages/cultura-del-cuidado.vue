@@ -53,23 +53,38 @@ const mailLink = `mailto:${contact.email}?subject=${encodeURIComponent(
     <!-- Qué es / Para quién -->
     <section class="section intro">
       <div class="container intro__grid">
-        <div class="intro__block reveal">
-          <h2 class="h2">Qué es</h2>
-          <p class="prose-p">
+        <article class="card intro__card reveal">
+          <span class="intro__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21s-6.5-4.3-9-9a4.5 4.5 0 0 1 8-3 4.5 4.5 0 0 1 8 3c-2.5 4.7-7 9-7 9Z" />
+            </svg>
+          </span>
+          <p class="intro__eyebrow">El programa</p>
+          <h2 class="intro__title">Qué es</h2>
+          <p class="intro__text">
             Cultura del Cuidado es un programa de bienestar organizacional para
             equipos e instituciones que quieren construir entornos donde las
             personas no solo rindan, sino que florezcan. Porque cuidar no es un
             beneficio adicional. Es la base de todo lo que vale la pena.
           </p>
-        </div>
-        <div class="intro__block reveal" data-reveal-delay="120">
-          <h2 class="h2">Para quién</h2>
-          <p class="prose-p">
+        </article>
+        <article class="card intro__card reveal" data-reveal-delay="120">
+          <span class="intro__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="7" r="3" />
+              <circle cx="5.5" cy="10" r="2.2" />
+              <circle cx="18.5" cy="10" r="2.2" />
+              <path d="M2 20c0-2.5 2-4 4-4M22 20c0-2.5-2-4-4-4M7 21c0-3 2.2-5 5-5s5 2 5 5" />
+            </svg>
+          </span>
+          <p class="intro__eyebrow">Las organizaciones</p>
+          <h2 class="intro__title">Para quién</h2>
+          <p class="intro__text">
             Para empresas, instituciones educativas y organizaciones sociales en
             Colombia y cualquier país hispanohablante. Presencial o virtual, a la
             medida de cada equipo.
           </p>
-        </div>
+        </article>
       </div>
     </section>
 
@@ -253,9 +268,36 @@ const mailLink = `mailto:${contact.email}?subject=${encodeURIComponent(
 .prose-p { color: var(--color-ink-soft); }
 
 /* Qué es / Para quién */
-.intro__grid { display: grid; gap: 2rem; align-items: start; }
-.intro__block .h2 { font-size: var(--step-2); }
-@media (min-width: 720px) { .intro__grid { grid-template-columns: 1fr 1fr; gap: 3rem; } }
+.intro__grid { display: grid; gap: 1.5rem; align-items: stretch; }
+.intro__card {
+  position: relative;
+  padding: clamp(1.75rem, 1.4rem + 2vw, 2.75rem);
+  overflow: hidden;
+  transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+}
+.intro__card::before {
+  content: '';
+  position: absolute; inset: 0 auto 0 0;
+  width: 4px;
+  background: linear-gradient(to bottom, var(--color-primary), var(--color-accent));
+}
+.intro__card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.intro__icon {
+  display: grid; place-items: center;
+  width: 52px; height: 52px;
+  border-radius: 14px;
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+  margin-bottom: 1.1rem;
+}
+.intro__eyebrow {
+  font-family: var(--font-body); font-weight: 600;
+  font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--color-accent); margin-bottom: 0.35rem;
+}
+.intro__title { font-family: var(--font-display); font-size: var(--step-2); margin-bottom: 0.7rem; }
+.intro__text { color: var(--color-ink-soft); line-height: 1.6; }
+@media (min-width: 720px) { .intro__grid { grid-template-columns: 1fr 1fr; gap: 2rem; } }
 
 @media (min-width: 720px) { .ws__grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { .ws__grid { grid-template-columns: repeat(3, 1fr); } }
