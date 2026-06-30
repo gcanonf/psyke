@@ -68,12 +68,13 @@ function onTrackScroll() {
       <div class="container shader-hero__inner">
         <p class="shader-hero__eyebrow reveal">Psicoterapia</p>
         <h1 class="shader-hero__title reveal" data-reveal-delay="80">
-          Consulta clínica online y presencial
+          Consulta clínica
         </h1>
         <p class="shader-hero__lede reveal" data-reveal-delay="160">
-          Una atención cálida y humanizada, con tratamientos respaldados
-          científicamente desde un enfoque cognitivo-conductual. Sin límites
-          geográficos y con horarios flexibles.
+          Ofrezco consulta psicológica online para hispanohablantes en Colombia y
+          en cualquier país del mundo. Un espacio cálido, humano y científicamente
+          respaldado, desde el enfoque cognitivo-conductual y la especialización
+          en trauma y EMDR.
         </p>
         <div class="shader-hero__actions reveal" data-reveal-delay="240">
           <a :href="bookingLink" target="_blank" rel="noopener" class="btn btn--accent">
@@ -90,6 +91,24 @@ function onTrackScroll() {
     </section>
 
     <span id="contenido" />
+
+    <!-- Intro + featured quote -->
+    <section class="section intro">
+      <div class="container intro__inner reveal">
+        <p class="intro__p">
+          Juntos trabajamos para comprender tus emociones, sanar heridas del
+          pasado y construir relaciones más saludables contigo mismo y con los
+          demás.
+        </p>
+        <p class="intro__p">
+          Con horarios flexibles que se adaptan a tu vida, sin importar tu zona
+          horaria.
+        </p>
+        <blockquote class="intro__quote">
+          La distancia no es un obstáculo para sanar.
+        </blockquote>
+      </div>
+    </section>
 
     <!-- Process workflow -->
     <section class="section process" aria-labelledby="proc-h">
@@ -339,6 +358,19 @@ function onTrackScroll() {
 
 .h2 { font-size: var(--step-3); margin-bottom: 1rem; }
 .head--center { text-align: center; max-width: 40rem; margin: 0 auto clamp(2rem, 1.5rem + 2vw, 3rem); }
+
+/* ---- Intro + featured quote ---- */
+.intro__inner { max-width: 46rem; margin-inline: auto; text-align: center; }
+.intro__p { color: var(--color-ink-soft); font-size: var(--step-0); }
+.intro__p + .intro__p { margin-top: 1rem; }
+.intro__quote {
+  margin-top: 2rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--step-2);
+  line-height: 1.4;
+  color: var(--color-primary);
+}
 
 /* ---- Order from chaos (entropy) ---- */
 .entropy-sec { background: var(--color-surface-alt); }

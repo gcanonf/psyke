@@ -4,9 +4,10 @@ import { brand, contact, whyTherapy, differentiators } from '~/data/site'
 useReveal()
 
 useSeo({
-  title: 'Psicóloga en Bogotá · Psicoterapia y EMDR online | PSYKE',
+  title:
+    'Psicóloga clínica y consultora en salud mental | EMDR · Trauma · Educación socioemocional',
   description:
-    'Psicoterapia, EMDR y bienestar emocional con la psicóloga Eva Margarita Cañón Falla. Atención online y presencial en Bogotá, Colombia. Agenda tu cita: cuidar tu salud mental es cuidar tu vida.',
+    'Psicoterapia, EMDR y acompañamiento emocional online para hispanohablantes con Eva Margarita Cañón Falla. Un espacio seguro para comprender tus emociones, integrar tu historia y construir bienestar.',
 })
 
 const bookingLink = contact.booking
@@ -57,9 +58,9 @@ const sello = [
             Cuidar de tu salud mental es cuidar de tu vida
           </h1>
           <p class="lede hero__lede reveal" data-reveal-delay="160">
-            Acompañamiento psicológico cálido y humano. Psicoterapia, EMDR y
-            programas de cuidado emocional, online y presencial, con
-            {{ brand.professional }}.
+            Un espacio seguro para comprender tus emociones, integrar tu historia
+            y construir nuevas posibilidades de bienestar. Psicoterapia, EMDR y
+            acompañamiento emocional online para hispanohablantes.
           </p>
           <div class="hero__actions reveal" data-reveal-delay="240">
             <a :href="bookingLink" target="_blank" rel="noopener" class="btn btn--accent">

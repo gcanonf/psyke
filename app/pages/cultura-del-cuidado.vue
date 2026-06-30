@@ -2,13 +2,14 @@
 import { careWorkshops, contact } from '~/data/site'
 useReveal()
 useSeo({
-  title: 'Cultura del Cuidado · Talleres de bienestar para empresas | PSYKE',
+  title:
+    'Bienestar organizacional en español | Programas de cuidado para equipos',
   description:
-    'Talleres y conferencias de bienestar para equipos y comunidades en Colombia: autoliderazgo, comunicación, resiliencia, gestión del tiempo, negociación y equilibrio integral. A la medida de tu organización.',
+    'Programas de bienestar organizacional para empresas e instituciones hispanohablantes. Cuidado, autoliderazgo y resiliencia para equipos en Colombia y el mundo.',
 })
 
 const mailLink = `mailto:${contact.email}?subject=${encodeURIComponent(
-  'Talleres de Cultura del Cuidado',
+  'Propuesta de Cultura del Cuidado',
 )}`
 </script>
 
@@ -27,15 +28,15 @@ const mailLink = `mailto:${contact.email}?subject=${encodeURIComponent(
       <div class="container shader-hero__inner">
         <p class="shader-hero__eyebrow reveal">Cultura del Cuidado</p>
         <h1 class="shader-hero__title reveal" data-reveal-delay="80">
-          Talleres y conferencias
+          Bienestar organizacional
         </h1>
         <p class="shader-hero__lede reveal" data-reveal-delay="160">
-          Espacios que equilibran el desarrollo profesional con el bienestar
-          emocional, para construir entornos más sanos y productivos.
+          Las organizaciones que prosperan no son las que más exigen. Son las que
+          cuidan.
         </p>
         <div class="shader-hero__actions reveal" data-reveal-delay="240">
           <a :href="mailLink" class="btn btn--accent">
-            Solicita información
+            Solicitar propuesta personalizada
           </a>
         </div>
       </div>
@@ -49,27 +50,37 @@ const mailLink = `mailto:${contact.email}?subject=${encodeURIComponent(
 
     <span id="contenido" />
 
-    <!-- Featured quote -->
-    <section class="section quote-feature">
-      <div class="container quote-feature__inner reveal">
-        <svg class="quote-feature__mark" viewBox="0 0 32 32" width="56" height="56" aria-hidden="true">
-          <path d="M12 8c-3.3 0-6 2.7-6 6v10h9V14H9c0-1.7 1.3-3 3-3V8Zm14 0c-3.3 0-6 2.7-6 6v10h9V14h-6c0-1.7 1.3-3 3-3V8Z" fill="var(--color-primary-tint)" />
-        </svg>
-        <blockquote class="quote-feature__text">
-          Asistir no es solo aprender algo nuevo; es regalarse un espacio para
-          <em>crecer, descubrir y compartir.</em>
-        </blockquote>
+    <!-- Qué es / Para quién -->
+    <section class="section intro">
+      <div class="container intro__grid">
+        <div class="intro__block reveal">
+          <h2 class="h2">Qué es</h2>
+          <p class="prose-p">
+            Cultura del Cuidado es un programa de bienestar organizacional para
+            equipos e instituciones que quieren construir entornos donde las
+            personas no solo rindan, sino que florezcan. Porque cuidar no es un
+            beneficio adicional. Es la base de todo lo que vale la pena.
+          </p>
+        </div>
+        <div class="intro__block reveal" data-reveal-delay="120">
+          <h2 class="h2">Para quién</h2>
+          <p class="prose-p">
+            Para empresas, instituciones educativas y organizaciones sociales en
+            Colombia y cualquier país hispanohablante. Presencial o virtual, a la
+            medida de cada equipo.
+          </p>
+        </div>
       </div>
     </section>
 
     <section class="section">
       <div class="container">
         <header class="head--center reveal">
-          <p class="eyebrow">Talleres</p>
-          <h2 class="h2">Seis áreas de cuidado integral</h2>
+          <p class="eyebrow">Seis espacios de cuidado</p>
+          <h2 class="h2">Un programa a la medida de cada equipo</h2>
           <p class="lede">
-            Talleres prácticos y aplicables a la vida diaria. Los temas se ajustan
-            a las necesidades de cada audiencia.
+            Seis espacios que se combinan y ajustan según las necesidades de cada
+            organización.
           </p>
         </header>
         <div class="ws__grid">
@@ -100,14 +111,34 @@ const mailLink = `mailto:${contact.email}?subject=${encodeURIComponent(
       </div>
     </section>
 
+    <!-- Featured quote -->
+    <section class="section quote-feature">
+      <div class="container quote-feature__inner reveal">
+        <svg class="quote-feature__mark" viewBox="0 0 32 32" width="56" height="56" aria-hidden="true">
+          <path d="M12 8c-3.3 0-6 2.7-6 6v10h9V14H9c0-1.7 1.3-3 3-3V8Zm14 0c-3.3 0-6 2.7-6 6v10h9V14h-6c0-1.7 1.3-3 3-3V8Z" fill="var(--color-primary-tint)" />
+        </svg>
+        <blockquote class="quote-feature__text">
+          Un equipo que se siente cuidado no solo rinde más.
+          <em>Florece.</em> Y un equipo que florece transforma todo lo que toca.
+        </blockquote>
+      </div>
+    </section>
+
     <section class="section feature">
       <div class="container feature__inner reveal">
-        <h2 class="h2">Diseñado a la medida de tu equipo</h2>
+        <h2 class="h2">¿Construimos juntos el programa de tu equipo?</h2>
         <p class="prose-p">
-          Todas las sesiones combinan competencias profesionales con el bienestar
-          emocional de las personas, con herramientas prácticas que se llevan a la
-          vida cotidiana. Ideal para organizaciones, instituciones y comunidades
-          que quieren cuidar a quienes las integran.
+          Diseñamos una propuesta a la medida de tu organización, presencial o
+          virtual, según sus necesidades y su momento.
+        </p>
+        <div class="feature__cta">
+          <a :href="mailLink" class="btn btn--accent">
+            Solicitar propuesta personalizada
+          </a>
+        </div>
+        <p class="feature__link">
+          ¿Buscas aprendizaje personal sobre salud mental?
+          <NuxtLink to="/psicoeducacion">Visita Psicoeducación para la Vida.</NuxtLink>
         </p>
       </div>
     </section>
@@ -215,7 +246,16 @@ const mailLink = `mailto:${contact.email}?subject=${encodeURIComponent(
 .ws__card p { color: var(--color-ink-soft); }
 .feature { background: var(--color-surface-alt); }
 .feature__inner { max-width: 46rem; margin-inline: auto; text-align: center; }
+.feature__cta { margin-top: 1.75rem; }
+.feature__link { margin-top: 1.75rem; color: var(--color-ink-soft); }
+.feature__link a { color: var(--color-primary); font-weight: 600; }
+.feature__link a:hover { color: var(--color-accent); }
 .prose-p { color: var(--color-ink-soft); }
+
+/* Qué es / Para quién */
+.intro__grid { display: grid; gap: 2rem; align-items: start; }
+.intro__block .h2 { font-size: var(--step-2); }
+@media (min-width: 720px) { .intro__grid { grid-template-columns: 1fr 1fr; gap: 3rem; } }
 
 @media (min-width: 720px) { .ws__grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { .ws__grid { grid-template-columns: repeat(3, 1fr); } }

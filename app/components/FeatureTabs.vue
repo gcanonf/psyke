@@ -44,6 +44,34 @@ function onKey(e: KeyboardEvent, i: number) {
         </p>
       </header>
 
+      <!-- "¿Qué necesitas hoy?" — quick routing into the right space -->
+      <div class="ft__needs reveal" data-reveal-delay="60">
+        <p class="ft__needs-q">¿Qué necesitas hoy?</p>
+        <ul class="ft__needs-list">
+          <li>
+            <NuxtLink to="/psicoterapia" class="ft__need">
+              <span class="ft__need-want">Quiero iniciar un proceso terapéutico</span>
+              <span class="ft__need-arrow" aria-hidden="true">→</span>
+              <span class="ft__need-to">Psicoterapia y EMDR</span>
+            </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink to="/cultura-del-cuidado" class="ft__need">
+              <span class="ft__need-want">Quiero bienestar para mi organización</span>
+              <span class="ft__need-arrow" aria-hidden="true">→</span>
+              <span class="ft__need-to">Cultura del Cuidado</span>
+            </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink to="/psicoeducacion" class="ft__need">
+              <span class="ft__need-want">Quiero aprender sobre salud mental</span>
+              <span class="ft__need-arrow" aria-hidden="true">→</span>
+              <span class="ft__need-to">Psicoeducación para la Vida</span>
+            </NuxtLink>
+          </li>
+        </ul>
+      </div>
+
       <!-- Tab strip -->
       <div class="ft__tabs reveal" role="tablist" aria-label="Servicios de PSYKE" data-reveal-delay="80">
         <button
@@ -112,6 +140,30 @@ function onKey(e: KeyboardEvent, i: number) {
 }
 .ft__title { font-size: var(--step-3); }
 .ft__desc { margin-top: 0.9rem; color: var(--color-ink-soft); font-size: var(--step-0); }
+
+/* "¿Qué necesitas hoy?" routing block */
+.ft__needs { max-width: 46rem; margin: 0 auto clamp(2rem, 1.5rem + 2vw, 3rem); }
+.ft__needs-q {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  color: var(--color-ink);
+  margin-bottom: 1.25rem;
+}
+.ft__needs-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem; }
+.ft__need {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.75rem;
+  padding: 0.95rem 1.25rem;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-surface);
+  text-decoration: none;
+  transition: border-color var(--dur), background var(--dur), transform var(--dur) var(--ease-out);
+}
+.ft__need:hover { border-color: var(--color-primary); background: var(--color-primary-tint); transform: translateY(-2px); }
+.ft__need-want { font-weight: 600; color: var(--color-ink); }
+.ft__need-arrow { color: var(--color-accent); font-weight: 700; }
+.ft__need-to { color: var(--color-primary); font-weight: 600; }
 
 /* Tab strip */
 .ft__tabs {

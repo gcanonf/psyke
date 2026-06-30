@@ -163,9 +163,12 @@ const firstSession = [
       <div class="container evidence__inner reveal">
         <h2 class="h2">Evidencia científica sobre la terapia EMDR</h2>
         <p class="prose-p">
-          Distintos investigadores han realizado estudios rigurosos —incluyendo
-          investigaciones controladas, meta-análisis y revisiones sistemáticas—
-          que han contribuido a respaldar la evidencia científica de este enfoque.
+          No es un enfoque alternativo ni experimental. El EMDR está respaldado
+          por décadas de investigación científica rigurosa, incluyendo estudios
+          controlados, meta-análisis y revisiones sistemáticas. La Organización
+          Mundial de la Salud (OMS), la American Psychological Association (APA) y
+          ministerios de salud de todo el mundo lo reconocen como uno de los
+          tratamientos más efectivos para el trauma.
         </p>
         <div class="evidence__video reveal" data-reveal-delay="120">
           <iframe
@@ -203,8 +206,14 @@ const firstSession = [
     <section class="section quote-sec">
       <div class="container">
         <blockquote class="bigquote reveal">
-          «Las heridas no sanan solas. Tu historia merece un espacio seguro donde
-          pueda ser escuchada… con cuidado, con respeto y empatía.»
+          «Lo que hace diferente al EMDR no es solo la técnica. Es que por primera
+          vez muchas personas sienten que no están solas con lo que vivieron. Ese
+          acompañamiento, el de sentirse verdaderamente visto y sostenido, es tan
+          terapéutico como el método mismo.
+          <br /><br />
+          Porque lo que viviste no define quién eres. Pero procesarlo sí puede
+          transformar quién llegas a ser. Dar el primer paso es lo más difícil. Lo
+          demás lo hacemos juntos.»
         </blockquote>
       </div>
     </section>

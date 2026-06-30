@@ -126,9 +126,9 @@ export const services: Service[] = [
     slug: 'psicoterapia',
     to: '/psicoterapia',
     title: 'Psicoterapia',
-    short: 'Consulta clínica online y presencial',
+    short: 'Consulta clínica',
     description:
-      'Atención clínica cálida y humanizada, con tratamientos respaldados científicamente desde un enfoque cognitivo-conductual. Sin límites geográficos y con horarios flexibles.',
+      'Encuentra un espacio seguro de escucha, comprensión y transformación. Ofrezco atención psicológica personalizada desde un enfoque cognitivo-conductual, con herramientas basadas en evidencia científica para acompañar procesos emocionales, mejorar el bienestar y fortalecer tus recursos personales.',
     image: '/images/services/psicoterapia.jpg',
     imageAlt: 'Ilustración de una mente en reflexión que busca su rumbo, símbolo del proceso terapéutico',
   },
@@ -148,7 +148,7 @@ export const services: Service[] = [
     title: 'Cultura del Cuidado',
     short: 'Talleres para equipos y comunidades',
     description:
-      'Espacios formativos que equilibran el desarrollo profesional con el bienestar emocional para construir entornos más sanos y productivos.',
+      'Para organizaciones que entienden que el bienestar de su gente no es un beneficio adicional. Es la base de todo.',
     image: '/images/services/cultura-del-cuidado.jpg',
     imageAlt: 'Grupo de personas abrazadas, símbolo de comunidad y cuidado',
   },
@@ -158,7 +158,7 @@ export const services: Service[] = [
     title: 'Psicoeducación para la Vida',
     short: 'Talleres y conferencias',
     description:
-      'Faros de conocimiento y cuidado: psicología, educación y trabajo comunitario para descubrir herramientas prácticas que fortalecen la salud mental.',
+      'Porque nadie nos enseña a entendernos. Espacios donde el conocimiento psicológico se convierte en herramientas reales para vivir de otra manera.',
     image: '/images/services/psicoeducacion.jpg',
     imageAlt: 'Conferencia con un grupo de personas en un taller formativo',
   },
@@ -206,7 +206,7 @@ export const emdrFor: string[] = [
 export const careWorkshops = [
   {
     title: 'Autoliderazgo',
-    text: 'Desarrolla la habilidad de dirigirte a ti mismo con claridad y propósito, fortaleciendo la toma de decisiones, la resiliencia y la confianza personal.',
+    text: 'Desarrolla la habilidad de dirigirte a ti mismo con claridad y propósito, fortaleciendo el autoconocimiento, la toma de decisiones y la confianza personal.',
     image: '/images/cultura/autoliderazgo.jpg',
   },
   {
@@ -215,23 +215,23 @@ export const careWorkshops = [
     image: '/images/cultura/comunicacion.jpg',
   },
   {
-    title: 'Gestión del tiempo',
-    text: 'Estrategias para optimizar la productividad y equilibrar responsabilidades a través de la priorización y la eliminación de distracciones.',
+    title: 'Bienestar y prevención del burnout',
+    text: 'Espacios de calma y descanso consciente para cuidar la energía del equipo, prevenir el agotamiento y sostener el bienestar en el día a día.',
     image: '/images/cultura/tiempo.jpg',
   },
   {
-    title: 'Resiliencia',
-    text: 'Regulación emocional y manejo de la frustración a través de la inteligencia emocional y la toma de decisiones consciente.',
+    title: 'Resiliencia organizacional',
+    text: 'Fortalece la fuerza colectiva y la capacidad de superación conjunta para que el equipo afronte los cambios con apoyo mutuo y confianza.',
     image: '/images/cultura/resiliencia.jpg',
   },
   {
-    title: 'Negociación y gestión de conflictos',
-    text: 'Cultiva una mentalidad Ganar-Ganar y enfoques colaborativos para crear acuerdos mutuamente beneficiosos.',
+    title: 'Gestión emocional del conflicto',
+    text: 'Cultiva el diálogo cercano y respetuoso, la escucha y la resolución para transformar las tensiones en acuerdos que cuidan las relaciones.',
     image: '/images/cultura/negociacion.jpg',
   },
   {
-    title: 'Equilibrio físico, mental y espiritual',
-    text: 'Integra actividad física, nutrición, meditación y manejo del estrés para un bienestar integral.',
+    title: 'Equilibrio integral',
+    text: 'Integra cuerpo, mente y entorno —movimiento consciente, descanso y conexión— para un bienestar que sostiene a las personas y a sus vínculos.',
     image: '/images/cultura/equilibrio.jpg',
   },
 ]

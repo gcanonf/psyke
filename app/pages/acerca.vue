@@ -114,45 +114,56 @@ const journey = [
       <div class="container about-grid">
         <div class="about-media reveal">
           <NuxtImg
-            src="/images/eva-2.jpg"
+            src="/images/about/eva.jpg"
             :alt="`Retrato de ${brand.professional}, psicóloga fundadora de PSYKE`"
-            width="560"
-            height="685"
-            sizes="(max-width: 800px) 90vw, 440px"
+            width="863"
+            height="885"
+            sizes="(max-width: 760px) 70vw, 440px"
             placeholder
           />
         </div>
         <div class="prose reveal" data-reveal-delay="120">
           <p>
-            Soy <strong>Eva Margarita</strong>, psicóloga con maestría en
-            Problemáticas Sociales Infanto-Juveniles y maestría en Psicología
-            Cognitiva y Aprendizaje, lo que me permite abordar de manera integral
-            los desafíos que enfrentamos.
+            Soy <strong>Eva Margarita Cañón Falla</strong>, psicóloga con más de
+            20 años acompañando a personas, organizaciones y comunidades en
+            procesos de sanación, aprendizaje y bienestar.
+          </p>
+          <p>Trabajo desde dos dimensiones que se complementan profundamente.</p>
+          <p>
+            Desde la clínica, acompaño a personas que cargan experiencias que
+            dejaron huella: pérdidas, rupturas, miedos que no desaparecen,
+            heridas de infancia, situaciones de violencia o simplemente la
+            sensación de que algo no está bien y no saben cómo nombrarlo.
           </p>
           <p>
-            Cuento con más de 15 años de experiencia en el sector educativo,
-            especializándome en el diseño, la implementación y la evaluación de
-            proyectos enfocados en la formación ciudadana, la educación para la
-            paz y el desarrollo de competencias socioemocionales.
+            Desde lo social y educativo, diseño e implemento estrategias de
+            educación socioemocional, salud mental escolar y prevención de
+            riesgos psicosociales, con organizaciones, instituciones educativas y
+            comunidades que buscan construir entornos más seguros y saludables.
           </p>
           <p>
-            Poseo un sólido conocimiento en educación socioemocional, salud
-            mental escolar y protección de los derechos de niños, niñas y
-            adolescentes. Tengo competencias en el direccionamiento estratégico
-            de procesos orientados al desarrollo de habilidades socioemocionales,
-            la prevención de riesgos psicosociales y la promoción de la
-            convivencia y el bienestar.
+            Soy Experta en Clínica e Intervención en Trauma con EMDR (IDAE ·
+            SEMPyP), Magíster en Problemáticas Sociales Infanto-Juveniles
+            (Universidad de Buenos Aires) y Magíster en Psicología Cognitiva y
+            Aprendizaje (FLACSO Argentina · Universidad Autónoma de Madrid). Esta
+            formación me enseñó que las personas no somos un diagnóstico. Somos
+            historia, contexto, emoción y relación. Desde ahí acompaño cada
+            proceso.
           </p>
           <p>
-            Desde la práctica clínica, incorporo un enfoque
-            cognitivo-conductual, con formación en terapia EMDR aplicada al
-            abordaje del trauma psicológico, la regulación emocional y el
-            procesamiento de experiencias adversas, integrando la dimensión
-            emocional, cognitiva y relacional en el acompañamiento terapéutico.
+            Por eso elegí el nombre PSYKE, que en griego significa alma: ψυχή.
+            Porque en más de 20 años acompañando historias he visto algo que no
+            se olvida: cuando una persona sana, no es solo ella quien cambia.
+            Cambia su familia, su entorno, su manera de estar en el mundo.
+          </p>
+          <p>
+            En 2016 convertí esa convicción en un espacio real. Aquí cada
+            historia tiene un lugar. Aquí nadie tiene que sanar solo.
           </p>
           <blockquote class="quote">
-            «En PSYKE, creo que cada persona y comunidad tiene el potencial de
-            crecer y sanar.»
+            «Lo que más me ha enseñado este trabajo es que nadie sana en soledad.
+            Cuando alguien finalmente se siente visto y acompañado, algo profundo
+            empieza a cambiar.»
           </blockquote>
         </div>
       </div>
@@ -319,7 +330,13 @@ const journey = [
 }
 
 .about-grid { display: grid; gap: clamp(2rem, 1.5rem + 3vw, 3.5rem); align-items: start; }
-.about-media { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow); aspect-ratio: 9 / 11; }
+/* On mobile keep the portrait compact and centred so it doesn't dominate */
+.about-media {
+  border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow);
+  aspect-ratio: 9 / 11;
+  width: min(72%, 18rem);
+  margin-inline: auto;
+}
 .about-media :deep(img) { width: 100%; height: 100%; object-fit: cover; }
 .quote {
   margin-top: 1.75rem;
@@ -374,5 +391,6 @@ const journey = [
 
 @media (min-width: 760px) {
   .about-grid { grid-template-columns: 0.85fr 1.15fr; }
+  .about-media { width: 100%; margin-inline: 0; }
 }
 </style>

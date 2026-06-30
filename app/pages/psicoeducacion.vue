@@ -2,21 +2,28 @@
 import { contact } from '~/data/site'
 useReveal()
 useSeo({
-  title: 'Psicoeducación · Talleres y conferencias de salud mental | PSYKE',
+  title:
+    'Psicoeducación online en español | Salud mental accesible para hispanohablantes',
   description:
-    'Talleres y conferencias de psicoeducación en Colombia que integran psicología, educación y trabajo comunitario para fortalecer la salud mental sin estigmas, en instituciones, empresas y comunidades.',
+    'Espacios de psicoeducación online en español sobre salud mental, inteligencia emocional, trauma y bienestar. Para personas y familias hispanohablantes en cualquier país.',
 })
 
 const mailLink = `mailto:${contact.email}?subject=${encodeURIComponent(
-  'Charlas y talleres de Psicoeducación',
+  'Información sobre Psicoeducación para la Vida',
 )}`
 
 const parallaxEl = ref<HTMLElement | null>(null)
 useParallax(parallaxEl, 0.2)
 
-const formats = [
-  { title: 'Talleres', text: 'Espacios participativos con herramientas prácticas para la vida diaria.' },
-  { title: 'Conferencias', text: 'Encuentros que conectan la investigación y la teoría con lo cotidiano.' },
+const topics = [
+  'Salud mental sin estigmas',
+  'Inteligencia emocional',
+  'Crianza con vínculo',
+  'Duelo y pérdida',
+  'Estrés y ansiedad',
+  'Habilidades socioemocionales',
+  'El autocuidado que nadie te enseñó',
+  'Trauma y resiliencia',
 ]
 </script>
 
@@ -35,15 +42,16 @@ const formats = [
       <div class="container shader-hero__inner">
         <p class="shader-hero__eyebrow reveal">Psicoeducación para la Vida</p>
         <h1 class="shader-hero__title reveal" data-reveal-delay="80">
-          Faros de conocimiento y cuidado
+          Salud mental accesible para hispanohablantes
         </h1>
         <p class="shader-hero__lede reveal" data-reveal-delay="160">
-          Integro psicología, educación y trabajo comunitario para acompañar a
-          personas y grupos en el descubrimiento de herramientas prácticas.
+          ¿Por qué reaccionamos como reaccionamos? ¿Por qué hay heridas que no
+          sanan solas? ¿Por qué cuesta tanto pedir ayuda? Hay preguntas que
+          merecen respuesta. La psicoeducación está aquí para eso.
         </p>
         <div class="shader-hero__actions reveal" data-reveal-delay="240">
           <a :href="mailLink" class="btn btn--accent">
-            Solicita una charla
+            Solicitar información
           </a>
         </div>
       </div>
@@ -57,6 +65,55 @@ const formats = [
 
     <span id="contenido" />
 
+    <!-- Qué es / Para quién -->
+    <section class="section intro">
+      <div class="container intro__grid">
+        <div class="intro__block reveal">
+          <h2 class="h2">Qué es</h2>
+          <p class="prose-p">
+            Espacios de aprendizaje donde el conocimiento psicológico se convierte
+            en herramientas reales para la vida cotidiana. No es terapia. Es
+            entenderte mejor. Me gusta pensar en estos espacios como faros:
+            lugares donde aprendemos juntos a mirarnos con más claridad, más
+            compasión y menos estigma.
+          </p>
+        </div>
+        <div class="intro__block reveal" data-reveal-delay="120">
+          <h2 class="h2">Para quién</h2>
+          <p class="prose-p">
+            Para personas, familias, docentes, cuidadores y grupos comunitarios
+            que quieren comprender sus emociones y construir una vida con más
+            bienestar. Online en español para colombianos e hispanohablantes en
+            cualquier parte del mundo.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Temas -->
+    <section class="section topics-sec">
+      <div class="container">
+        <header class="head--center reveal">
+          <p class="eyebrow">Temas</p>
+          <h2 class="h2">Lo que exploramos juntos</h2>
+          <p class="lede">
+            Los espacios se diseñan a la medida de cada grupo. Si hablas español,
+            sin importar dónde estés, podemos trabajar juntos.
+          </p>
+        </header>
+        <ul class="topics__grid">
+          <li
+            v-for="(t, i) in topics"
+            :key="t"
+            class="card topic__card reveal"
+            :data-reveal-delay="(i % 4) * 70"
+          >
+            {{ t }}
+          </li>
+        </ul>
+      </div>
+    </section>
+
     <!-- Featured quote -->
     <section class="section quote-feature">
       <div class="container quote-feature__inner reveal">
@@ -64,34 +121,10 @@ const formats = [
           <path d="M12 8c-3.3 0-6 2.7-6 6v10h9V14H9c0-1.7 1.3-3 3-3V8Zm14 0c-3.3 0-6 2.7-6 6v10h9V14h-6c0-1.7 1.3-3 3-3V8Z" fill="var(--color-primary-tint)" />
         </svg>
         <blockquote class="quote-feature__text">
-          El conocimiento que se comparte se convierte en
-          <em>cuidado, y el cuidado, en comunidad.</em>
+          Hay un momento en que dejas de preguntarte qué te pasa y empiezas a
+          <em>entenderlo.</em> Ese momento lo cambia todo. Este espacio existe
+          para ayudarte a encontrarlo.
         </blockquote>
-      </div>
-    </section>
-
-    <!-- Content + formats -->
-    <section class="section formats-sec">
-      <div class="container two-col">
-        <div class="prose reveal">
-          <h2 class="h2">Salud mental sin estigmas</h2>
-          <p>
-            Abordamos la salud mental sin estigmas y con una visión más humana,
-            conectando la investigación y la teoría con su aplicación en la vida
-            cotidiana.
-          </p>
-          <p>
-            A través de programas personalizados y metodologías participativas,
-            ayudo a las personas y a los grupos a fortalecer su salud mental,
-            cultivar el cuidado emocional y construir relaciones más sanas.
-          </p>
-        </div>
-        <div class="formats reveal" data-reveal-delay="120">
-          <article v-for="f in formats" :key="f.title" class="card format__card">
-            <h3>{{ f.title }}</h3>
-            <p>{{ f.text }}</p>
-          </article>
-        </div>
       </div>
     </section>
 
@@ -104,6 +137,24 @@ const formats = [
           Acompañar a las personas y a los grupos en un camino donde descubran
           herramientas prácticas.
         </blockquote>
+      </div>
+    </section>
+
+    <!-- CTA + differentiator link -->
+    <section class="section feature">
+      <div class="container feature__inner reveal">
+        <h2 class="h2">¿Quieres saber más?</h2>
+        <p class="prose-p">
+          Cuéntame qué te interesa y diseñamos juntos el espacio que mejor
+          responde a tu momento o al de tu grupo.
+        </p>
+        <div class="feature__cta">
+          <a :href="mailLink" class="btn btn--accent">Solicitar información</a>
+        </div>
+        <p class="feature__link">
+          ¿Buscas un programa para tu organización o equipo?
+          <NuxtLink to="/cultura-del-cuidado">Visita Cultura del Cuidado.</NuxtLink>
+        </p>
       </div>
     </section>
   </div>
@@ -174,14 +225,35 @@ const formats = [
 }
 .quote-feature__text em { font-style: italic; color: var(--color-primary); }
 
-/* ---- Content + formats ---- */
-.formats-sec { background: var(--color-surface-alt); }
-.two-col { display: grid; gap: 2rem; align-items: start; }
+/* ---- Qué es / Para quién ---- */
 .h2 { font-size: var(--step-3); margin-bottom: 1rem; }
-.formats { display: flex; flex-direction: column; gap: 1.25rem; }
-.format__card { padding: 1.75rem; }
-.format__card h3 { color: var(--color-primary); font-size: var(--step-1); margin-bottom: 0.4rem; }
-.format__card p { color: var(--color-ink-soft); }
+.prose-p { color: var(--color-ink-soft); }
+.head--center { text-align: center; max-width: 42rem; margin: 0 auto clamp(2rem, 1.5rem + 2vw, 3rem); }
+.intro__grid { display: grid; gap: 2rem; align-items: start; }
+.intro__block .h2 { font-size: var(--step-2); }
+@media (min-width: 720px) { .intro__grid { grid-template-columns: 1fr 1fr; gap: 3rem; } }
+
+/* ---- Temas grid ---- */
+.topics-sec { background: var(--color-surface-alt); }
+.topics__grid { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; grid-template-columns: 1fr; }
+.topic__card {
+  padding: 1.25rem 1.4rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  line-height: 1.4;
+  transition: transform var(--dur) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+}
+.topic__card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+@media (min-width: 640px) { .topics__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 980px) { .topics__grid { grid-template-columns: repeat(4, 1fr); } }
+
+/* ---- CTA + differentiator link ---- */
+.feature { background: var(--color-surface-alt); }
+.feature__inner { max-width: 46rem; margin-inline: auto; text-align: center; }
+.feature__cta { margin-top: 1.75rem; }
+.feature__link { margin-top: 1.75rem; color: var(--color-ink-soft); }
+.feature__link a { color: var(--color-primary); font-weight: 600; }
+.feature__link a:hover { color: var(--color-accent); }
 
 /* ---- Parallax band ---- */
 .parallax {
