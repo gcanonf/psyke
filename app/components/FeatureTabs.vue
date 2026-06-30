@@ -46,27 +46,56 @@ function onKey(e: KeyboardEvent, i: number) {
 
       <!-- "¿Qué necesitas hoy?" — quick routing into the right space -->
       <div class="ft__needs reveal" data-reveal-delay="60">
+        <p class="ft__needs-eyebrow">Empieza por aquí</p>
         <p class="ft__needs-q">¿Qué necesitas hoy?</p>
         <ul class="ft__needs-list">
           <li>
             <NuxtLink to="/psicoterapia" class="ft__need">
-              <span class="ft__need-want">Quiero iniciar un proceso terapéutico</span>
-              <span class="ft__need-arrow" aria-hidden="true">→</span>
-              <span class="ft__need-to">Psicoterapia y EMDR</span>
+              <span class="ft__need-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 20s-6.5-4.3-9-9a4.5 4.5 0 0 1 8-3 4.5 4.5 0 0 1 8 3c-2.5 4.7-7 9-7 9Z" />
+                </svg>
+              </span>
+              <span class="ft__need-copy">
+                <span class="ft__need-want">Quiero iniciar un proceso terapéutico</span>
+                <span class="ft__need-to">Psicoterapia y EMDR</span>
+              </span>
+              <span class="ft__need-go" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+              </span>
             </NuxtLink>
           </li>
           <li>
             <NuxtLink to="/cultura-del-cuidado" class="ft__need">
-              <span class="ft__need-want">Quiero bienestar para mi organización</span>
-              <span class="ft__need-arrow" aria-hidden="true">→</span>
-              <span class="ft__need-to">Cultura del Cuidado</span>
+              <span class="ft__need-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="7" r="3" /><circle cx="5.5" cy="10" r="2.2" /><circle cx="18.5" cy="10" r="2.2" />
+                  <path d="M2 20c0-2.5 2-4 4-4M22 20c0-2.5-2-4-4-4M7 21c0-3 2.2-5 5-5s5 2 5 5" />
+                </svg>
+              </span>
+              <span class="ft__need-copy">
+                <span class="ft__need-want">Quiero bienestar para mi organización</span>
+                <span class="ft__need-to">Cultura del Cuidado</span>
+              </span>
+              <span class="ft__need-go" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+              </span>
             </NuxtLink>
           </li>
           <li>
             <NuxtLink to="/psicoeducacion" class="ft__need">
-              <span class="ft__need-want">Quiero aprender sobre salud mental</span>
-              <span class="ft__need-arrow" aria-hidden="true">→</span>
-              <span class="ft__need-to">Psicoeducación para la Vida</span>
+              <span class="ft__need-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 7l9-4 9 4-9 4-9-4Z" /><path d="M7 9v5c0 1.4 2.2 2.5 5 2.5s5-1.1 5-2.5V9" /><path d="M21 7v6" />
+                </svg>
+              </span>
+              <span class="ft__need-copy">
+                <span class="ft__need-want">Quiero aprender sobre salud mental</span>
+                <span class="ft__need-to">Psicoeducación para la Vida</span>
+              </span>
+              <span class="ft__need-go" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+              </span>
             </NuxtLink>
           </li>
         </ul>
@@ -142,28 +171,90 @@ function onKey(e: KeyboardEvent, i: number) {
 .ft__desc { margin-top: 0.9rem; color: var(--color-ink-soft); font-size: var(--step-0); }
 
 /* "¿Qué necesitas hoy?" routing block */
-.ft__needs { max-width: 46rem; margin: 0 auto clamp(2rem, 1.5rem + 2vw, 3rem); }
-.ft__needs-q {
-  text-align: center;
-  font-family: var(--font-display);
-  font-size: var(--step-1);
-  color: var(--color-ink);
-  margin-bottom: 1.25rem;
+.ft__needs { max-width: 52rem; margin: 0 auto clamp(2.5rem, 2rem + 2vw, 3.5rem); text-align: center; }
+.ft__needs-eyebrow {
+  font-family: var(--font-body); font-weight: 600;
+  font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--color-accent); margin-bottom: 0.5rem;
 }
-.ft__needs-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem; }
+.ft__needs-q {
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  color: var(--color-ink);
+  margin-bottom: 1.5rem;
+}
+.ft__needs-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.85rem; text-align: left; }
 .ft__need {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.75rem;
-  padding: 0.95rem 1.25rem;
-  border-radius: var(--radius);
-  border: 1.5px solid var(--color-border);
+  position: relative;
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1.1rem 1.25rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
   background: var(--color-surface);
   text-decoration: none;
-  transition: border-color var(--dur), background var(--dur), transform var(--dur) var(--ease-out);
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  transition: border-color var(--dur), transform var(--dur) var(--ease-out), box-shadow var(--dur);
 }
-.ft__need:hover { border-color: var(--color-primary); background: var(--color-primary-tint); transform: translateY(-2px); }
-.ft__need-want { font-weight: 600; color: var(--color-ink); }
-.ft__need-arrow { color: var(--color-accent); font-weight: 700; }
-.ft__need-to { color: var(--color-primary); font-weight: 600; }
+/* accent rail revealed on hover */
+.ft__need::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, var(--color-primary), var(--color-accent));
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform var(--dur) var(--ease-out);
+}
+.ft__need:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+}
+.ft__need:hover::before { transform: scaleY(1); }
+
+.ft__need-icon {
+  flex: 0 0 auto;
+  display: grid; place-items: center;
+  width: 48px; height: 48px;
+  border-radius: 14px;
+  background: var(--color-primary-tint);
+  color: var(--color-primary);
+  transition: background var(--dur), color var(--dur), transform var(--dur) var(--ease-out);
+}
+.ft__need:hover .ft__need-icon {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  transform: scale(1.05);
+}
+
+.ft__need-copy { display: flex; flex-direction: column; gap: 0.15rem; flex: 1 1 auto; min-width: 0; }
+.ft__need-want { font-weight: 600; color: var(--color-ink); line-height: 1.3; }
+.ft__need-to {
+  font-size: 0.85rem; font-weight: 600;
+  color: var(--color-primary);
+  letter-spacing: 0.01em;
+}
+
+.ft__need-go {
+  flex: 0 0 auto;
+  display: grid; place-items: center;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border);
+  color: var(--color-ink-soft);
+  transition: all var(--dur) var(--ease-out);
+}
+.ft__need:hover .ft__need-go {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+  transform: translateX(3px);
+}
+
+@media (min-width: 760px) {
+  .ft__need { padding: 1.25rem 1.5rem; }
+}
 
 /* Tab strip */
 .ft__tabs {

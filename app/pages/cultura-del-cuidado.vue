@@ -151,10 +151,13 @@ const mailLink = `mailto:${contact.email}?subject=${encodeURIComponent(
             Solicitar propuesta personalizada
           </a>
         </div>
-        <p class="feature__link">
-          ¿Buscas aprendizaje personal sobre salud mental?
-          <NuxtLink to="/psicoeducacion">Visita Psicoeducación para la Vida.</NuxtLink>
-        </p>
+        <NuxtLink to="/psicoeducacion" class="feature__cross">
+          <span class="feature__cross-eyebrow">¿Aprendizaje personal sobre salud mental?</span>
+          <span class="feature__cross-link">
+            Visita Psicoeducación para la Vida
+            <span aria-hidden="true">→</span>
+          </span>
+        </NuxtLink>
       </div>
     </section>
 
@@ -262,9 +265,27 @@ const mailLink = `mailto:${contact.email}?subject=${encodeURIComponent(
 .feature { background: var(--color-surface-alt); }
 .feature__inner { max-width: 46rem; margin-inline: auto; text-align: center; }
 .feature__cta { margin-top: 1.75rem; }
-.feature__link { margin-top: 1.75rem; color: var(--color-ink-soft); }
-.feature__link a { color: var(--color-primary); font-weight: 600; }
-.feature__link a:hover { color: var(--color-accent); }
+.feature__cross {
+  display: inline-flex; flex-direction: column; gap: 0.3rem;
+  margin-top: 2rem; padding: 1rem 1.5rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  text-decoration: none;
+  transition: border-color var(--dur), transform var(--dur) var(--ease-out);
+}
+.feature__cross:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+.feature__cross-eyebrow {
+  font-family: var(--font-body); font-weight: 600;
+  font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--color-accent);
+}
+.feature__cross-link {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  font-weight: 600; color: var(--color-primary);
+  transition: gap var(--dur);
+}
+.feature__cross:hover .feature__cross-link { gap: 0.7rem; }
 .prose-p { color: var(--color-ink-soft); }
 
 /* Qué es / Para quién */

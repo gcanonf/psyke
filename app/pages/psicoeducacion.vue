@@ -193,20 +193,29 @@ const topics = [
     </section>
 
     <!-- CTA + differentiator link -->
-    <section class="section feature">
-      <div class="container feature__inner reveal">
-        <h2 class="h2">¿Quieres saber más?</h2>
-        <p class="prose-p">
-          Cuéntame qué te interesa y diseñamos juntos el espacio que mejor
-          responde a tu momento o al de tu grupo.
-        </p>
-        <div class="feature__cta">
-          <a :href="mailLink" class="btn btn--accent">Solicitar información</a>
-        </div>
-        <p class="feature__link">
-          ¿Buscas un programa para tu organización o equipo?
-          <NuxtLink to="/cultura-del-cuidado">Visita Cultura del Cuidado.</NuxtLink>
-        </p>
+    <section class="section closing">
+      <div class="container closing__grid">
+        <a :href="mailLink" class="closing__cta reveal">
+          <span class="closing__cta-copy">
+            <span class="closing__cta-title">¿Quieres saber más?</span>
+            <span class="closing__cta-text">
+              Cuéntame qué te interesa y diseñamos juntos el espacio que mejor
+              responde a tu momento.
+            </span>
+          </span>
+          <span class="closing__cta-action">
+            Solicitar información
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
+          </span>
+        </a>
+
+        <NuxtLink to="/cultura-del-cuidado" class="closing__cross reveal" data-reveal-delay="100">
+          <span class="closing__cross-eyebrow">¿Para tu organización?</span>
+          <span class="closing__cross-link">
+            Visita Cultura del Cuidado
+            <span aria-hidden="true">→</span>
+          </span>
+        </NuxtLink>
       </div>
     </section>
   </div>
@@ -347,13 +356,61 @@ const topics = [
 @media (min-width: 640px) { .topics__grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1040px) { .topics__grid { grid-template-columns: repeat(4, 1fr); } }
 
-/* ---- CTA + differentiator link ---- */
-.feature { background: var(--color-surface-alt); }
-.feature__inner { max-width: 46rem; margin-inline: auto; text-align: center; }
-.feature__cta { margin-top: 1.75rem; }
-.feature__link { margin-top: 1.75rem; color: var(--color-ink-soft); }
-.feature__link a { color: var(--color-primary); font-weight: 600; }
-.feature__link a:hover { color: var(--color-accent); }
+/* ---- Closing CTA + cross-link ---- */
+.closing { background: var(--color-surface-alt); }
+.closing__grid {
+  max-width: 52rem; margin-inline: auto;
+  display: grid; gap: 1rem; align-items: stretch;
+}
+
+/* primary CTA — the whole card is the link, no separate button */
+.closing__cta {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 1.25rem;
+  padding: clamp(1.5rem, 1.2rem + 2vw, 2.25rem);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--color-primary), #54468a);
+  color: var(--color-on-primary);
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  transition: transform var(--dur) var(--ease-out), box-shadow var(--dur);
+}
+.closing__cta:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.closing__cta-copy { display: flex; flex-direction: column; gap: 0.35rem; flex: 1 1 16rem; }
+.closing__cta-title { font-family: var(--font-display); font-size: var(--step-2); line-height: 1.15; }
+.closing__cta-text { color: rgba(255, 255, 255, 0.85); font-size: 0.95rem; line-height: 1.5; max-width: 34ch; }
+.closing__cta-action {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.15);
+  font-weight: 600; white-space: nowrap;
+  transition: background var(--dur), gap var(--dur);
+}
+.closing__cta:hover .closing__cta-action { background: rgba(255, 255, 255, 0.25); gap: 0.75rem; }
+
+/* secondary cross-link card */
+.closing__cross {
+  display: flex; flex-direction: column; gap: 0.3rem;
+  padding: 1.25rem clamp(1.5rem, 1.2rem + 2vw, 2.25rem);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  text-decoration: none;
+  transition: border-color var(--dur), transform var(--dur) var(--ease-out);
+}
+.closing__cross:hover { border-color: var(--color-primary); transform: translateY(-2px); }
+.closing__cross-eyebrow {
+  font-family: var(--font-body); font-weight: 600;
+  font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--color-accent);
+}
+.closing__cross-link {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  font-weight: 600; color: var(--color-primary);
+  transition: gap var(--dur);
+}
+.closing__cross:hover .closing__cross-link { gap: 0.7rem; }
 
 /* ---- Parallax band ---- */
 .parallax {

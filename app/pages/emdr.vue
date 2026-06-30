@@ -205,16 +205,24 @@ const firstSession = [
 
     <section class="section quote-sec">
       <div class="container">
-        <blockquote class="bigquote reveal">
-          «Lo que hace diferente al EMDR no es solo la técnica. Es que por primera
-          vez muchas personas sienten que no están solas con lo que vivieron. Ese
-          acompañamiento, el de sentirse verdaderamente visto y sostenido, es tan
-          terapéutico como el método mismo.
-          <br /><br />
-          Porque lo que viviste no define quién eres. Pero procesarlo sí puede
-          transformar quién llegas a ser. Dar el primer paso es lo más difícil. Lo
-          demás lo hacemos juntos.»
-        </blockquote>
+        <figure class="bigquote reveal">
+          <span class="bigquote__mark" aria-hidden="true">“</span>
+          <blockquote class="bigquote__body">
+            <p>
+              Lo que hace diferente al EMDR no es solo la técnica. Es que por
+              primera vez muchas personas sienten que no están solas con lo que
+              vivieron. Ese acompañamiento, el de sentirse verdaderamente visto y
+              sostenido, es tan terapéutico como el método mismo.
+            </p>
+            <p class="bigquote__lead">
+              Porque lo que viviste no define quién eres. Pero procesarlo sí puede
+              transformar quién llegas a ser.
+            </p>
+          </blockquote>
+          <figcaption class="bigquote__foot">
+            Dar el primer paso es lo más difícil. Lo demás lo hacemos juntos.
+          </figcaption>
+        </figure>
       </div>
     </section>
 
@@ -338,12 +346,43 @@ const firstSession = [
 
 .quote-sec { padding-block: clamp(3rem, 2rem + 4vw, 5rem); }
 .bigquote {
+  position: relative;
   max-width: 44rem;
   margin-inline: auto;
-  text-align: center;
+  padding: clamp(2rem, 1.5rem + 3vw, 3.25rem) clamp(1.5rem, 1rem + 3vw, 3.5rem);
+  background: var(--color-surface-alt);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+/* decorative oversized quotation mark */
+.bigquote__mark {
+  position: absolute;
+  top: clamp(-0.5rem, -0.2rem + 1vw, 0.25rem);
+  left: clamp(0.75rem, 0.5rem + 1.5vw, 1.75rem);
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 4rem + 6vw, 8rem);
+  line-height: 1;
+  color: var(--color-accent-soft);
+  pointer-events: none;
+}
+.bigquote__body {
+  position: relative;
   font-family: var(--font-display);
   font-style: italic;
-  font-size: var(--step-2);
+  font-size: var(--step-1);
+  line-height: 1.55;
+  color: var(--color-ink-soft);
+}
+.bigquote__body p + p { margin-top: 1rem; }
+.bigquote__lead { color: var(--color-ink); }
+.bigquote__foot {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--step-1);
+  font-weight: 600;
   line-height: 1.4;
   color: var(--color-primary);
 }

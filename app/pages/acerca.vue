@@ -332,11 +332,12 @@ const journey = [
 .about-grid { display: grid; gap: clamp(2rem, 1.5rem + 3vw, 3.5rem); align-items: start; }
 /* On mobile keep the portrait compact and centred so it doesn't dominate */
 .about-media {
+  position: relative;
   border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow);
   /* match the portrait's native ratio (863×885 ≈ square) so the PSYKE
      wordmark on the left edge is never cropped by object-fit: cover */
   aspect-ratio: 863 / 885;
-  width: min(80%, 22rem);
+  width: min(82%, 22rem);
   margin-inline: auto;
 }
 .about-media :deep(img) { width: 100%; height: 100%; object-fit: cover; }
@@ -392,7 +393,27 @@ const journey = [
 }
 
 @media (min-width: 760px) {
-  .about-grid { grid-template-columns: 0.85fr 1.15fr; }
-  .about-media { width: 100%; margin-inline: 0; }
+  /* portrait column a touch wider; text gets comfortable measure */
+  .about-grid { grid-template-columns: 0.95fr 1.05fr; gap: clamp(2.5rem, 2rem + 3vw, 4rem); }
+  .about-media {
+    width: 100%; margin-inline: 0;
+    /* keep the portrait in view while reading the long bio */
+    position: sticky; top: 6rem;
+  }
+  /* decorative offset frame behind the portrait */
+  .about-media::after {
+    content: '';
+    position: absolute; inset: 0;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--color-primary) 18%, transparent);
+    pointer-events: none;
+  }
+  /* slightly larger, airier body copy on desktop */
+  .prose { font-size: 1.02rem; line-height: 1.7; }
+  .prose p { max-width: 60ch; }
+}
+
+@media (min-width: 1024px) {
+  .about-grid { grid-template-columns: 0.9fr 1.1fr; }
 }
 </style>
