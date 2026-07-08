@@ -236,23 +236,22 @@ const sello = [
 .hero__actions { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.8rem; }
 
 .hero__media { position: relative; display: flex; justify-content: center; }
-/* Clean circular crop (no edge blur — the photo has its own background that
-   would flicker against the animated shader). Framed with a soft ring. */
+/* Large circle whose edges fade softly into the page background (no solid
+   border) — like the original hero image. */
 .hero__circle {
   position: relative;
-  width: clamp(20rem, 40vw, 34rem);
+  width: clamp(22rem, 42vw, 38rem);
   aspect-ratio: 1 / 1;
-  border-radius: 50%;
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
-  border: 6px solid var(--color-surface);
 }
 .hero__circle :deep(img) {
   width: 100%;
   height: 100%;
   object-fit: cover;
   /* center the crop on the face / upper body */
-  object-position: center 30%;
+  object-position: center 28%;
+  /* soft radial fade so the edges melt into the page (no hard ring) */
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 30%, rgba(0,0,0,0.55) 46%, rgba(0,0,0,0.18) 56%, transparent 64%);
+  mask-image: radial-gradient(circle at 50% 50%, #000 30%, rgba(0,0,0,0.55) 46%, rgba(0,0,0,0.18) 56%, transparent 64%);
 }
 .hero__badge {
   position: absolute;
