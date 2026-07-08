@@ -24,10 +24,14 @@ useSeo({
           <p class="eyebrow">Psicoterapia</p>
           <h1 class="hero__title">Modalidades de terapia</h1>
           <p class="hero__sub">
-            Acompaño distintos momentos y procesos —para adultos, adolescentes y
-            niños, de forma individual o grupal— de manera
-            <strong>presencial u&nbsp;online</strong>. Desde Colombia, sin importar
-            dónde estés.
+            Hay momentos en que la vida pesa más de lo que podemos sostener por
+            nuestra cuenta. Acompaño a adultos y adolescentes que atraviesan esos
+            momentos, y a familias que quieren estar más presentes para sus hijos
+            e hijas.
+          </p>
+          <p class="hero__sub">
+            <strong>En tu idioma. Desde donde estés.</strong> Porque el cambio es
+            posible, y nadie debería recorrer ese camino en soledad.
           </p>
           <a :href="`#${therapies[0].id}`" class="hero__scroll">
             Conoce cada modalidad
@@ -148,7 +152,7 @@ useSeo({
 
 .mode__phrase { font-family: var(--font-display); font-style: italic; color: var(--color-accent); margin-bottom: 0.4rem; }
 .mode__title { font-size: var(--step-2); color: var(--color-primary); margin-bottom: 0.9rem; }
-.mode__text { color: var(--color-ink-soft); line-height: 1.7; margin-bottom: 1.6rem; }
+.mode__text { color: var(--color-ink-soft); line-height: 1.7; margin-bottom: 1.6rem; white-space: pre-line; }
 
 @media (min-width: 860px) {
   .mode__inner { grid-template-columns: 1fr 1fr; }
@@ -200,6 +204,7 @@ useSeo({
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.92);
   margin-inline: auto;
+  white-space: pre-line;
 }
 
 /* background-attachment:fixed is janky/unsupported on most mobile browsers;

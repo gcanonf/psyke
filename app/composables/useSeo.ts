@@ -4,10 +4,19 @@ import { site } from '~/data/site'
  * Per-page SEO helper: sets title + description, canonical URL, and Open Graph
  * / Twitter tags built from the current route. Call once per page.
  */
-export function useSeo(opts: { title: string; description: string; image?: string }) {
+export function useSeo(opts: {
+  title: string
+  description: string
+  image?: string
+  keywords?: string
+}) {
   const route = useRoute()
   const url = `${site.url}${route.path === '/' ? '' : route.path}`
   const image = `${site.url}${opts.image ?? '/og-image.jpg'}`
+
+  if (opts.keywords) {
+    useHead({ meta: [{ name: 'keywords', content: opts.keywords }] })
+  }
 
   useSeoMeta({
     title: opts.title,

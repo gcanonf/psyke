@@ -2,9 +2,11 @@
 import { brand } from '~/data/site'
 useReveal()
 useSeo({
-  title: 'Sobre mí · Eva Margarita Cañón Falla, psicóloga en Bogotá | PSYKE',
+  title: 'Sobre mí · Eva Margarita Cañón Falla, psicóloga online | PSYKE',
   description:
-    'Conoce a Eva Margarita Cañón Falla, psicóloga con dos maestrías y más de 15 años de experiencia en salud mental, EMDR, educación socioemocional y protección de la niñez. Fundadora de PSYKE, Bogotá, Colombia.',
+    'Conoce a Eva Margarita Cañón Falla, psicóloga con dos maestrías y más de 20 años de experiencia en salud mental, EMDR, educación socioemocional y protección de la niñez. Fundadora de PSYKE, atención online para hispanohablantes.',
+  keywords:
+    'psicóloga especializada trauma EMDR, psicóloga hispanohablantes online, Eva Margarita Cañón Falla psicóloga',
 })
 
 // Education (from her LinkedIn profile)
@@ -151,10 +153,11 @@ const journey = [
             proceso.
           </p>
           <p>
-            Por eso elegí el nombre PSYKE, que en griego significa alma: ψυχή.
-            Porque en más de 20 años acompañando historias he visto algo que no
-            se olvida: cuando una persona sana, no es solo ella quien cambia.
-            Cambia su familia, su entorno, su manera de estar en el mundo.
+            Por eso elegí el nombre PSYKE, que en griego significa alma (ψυχή),
+            porque en más de 20 años acompañando historias he visto algo que no
+            se olvida: cuando una persona sana, no es solo ella quien cambia;
+            también lo hacen su familia, su entorno y su manera de estar en el
+            mundo.
           </p>
           <p>
             En 2016 convertí esa convicción en un espacio real. Aquí cada

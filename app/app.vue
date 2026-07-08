@@ -66,7 +66,7 @@ const faqs = [
   },
   {
     q: '¿Quién es la psicóloga de PSYKE?',
-    a: 'Eva Margarita Cañón Falla, psicóloga con dos maestrías (Problemáticas Sociales Infanto-Juveniles y Psicología Cognitiva y Aprendizaje) y más de 15 años de experiencia en salud mental, educación socioemocional y protección de la niñez.',
+    a: 'Eva Margarita Cañón Falla, psicóloga con dos maestrías (Problemáticas Sociales Infanto-Juveniles y Psicología Cognitiva y Aprendizaje) y más de 20 años de experiencia en salud mental, educación socioemocional y protección de la niñez.',
   },
   {
     q: '¿Qué tipos de terapia ofrece PSYKE?',

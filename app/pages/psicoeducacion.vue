@@ -6,6 +6,8 @@ useSeo({
     'Psicoeducación online en español | Salud mental accesible para hispanohablantes',
   description:
     'Espacios de psicoeducación online en español sobre salud mental, inteligencia emocional, trauma y bienestar. Para personas y familias hispanohablantes en cualquier país.',
+  keywords:
+    'psicoeducación online en español, salud mental accesible hispanohablantes, talleres salud mental online español',
 })
 
 const mailLink = `mailto:${contact.email}?subject=${encodeURIComponent(

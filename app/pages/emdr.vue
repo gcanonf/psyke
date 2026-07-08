@@ -2,9 +2,11 @@
 import { contact } from '~/data/site'
 useReveal()
 useSeo({
-  title: 'Terapia EMDR para el trauma en Bogotá · online | PSYKE',
+  title: 'Terapia EMDR online en español para el trauma | PSYKE',
   description:
-    'EMDR en Bogotá con Eva Margarita Cañón Falla, especialista en trauma. Enfoque validado científicamente para reprocesar recuerdos dolorosos: trauma, ansiedad, fobias y bloqueos. Online y presencial en Colombia.',
+    'Terapia EMDR online en español con Eva Margarita Cañón Falla, especialista en trauma. Enfoque validado científicamente para reprocesar recuerdos dolorosos: trauma, ansiedad, fobias y bloqueos.',
+  keywords:
+    'terapia EMDR online en español, EMDR trauma hispanohablantes, reprocesamiento EMDR español, psicóloga EMDR online',
 })
 
 const bookingLink = contact.booking
@@ -12,10 +14,10 @@ const bookingLink = contact.booking
 // The 8 phases of the EMDR protocol
 const phases = [
   { title: 'Historia clínica', text: 'Conocemos tu historia, identificamos los recuerdos a trabajar y definimos juntos los objetivos del proceso.' },
-  { title: 'Preparación', text: 'Aprendes herramientas de estabilización y autocuidado para sentirte segura antes de comenzar el reprocesamiento.' },
+  { title: 'Preparación', text: 'Aprendes herramientas de estabilización y autocuidado para sentirte en calma y con seguridad antes de comenzar el reprocesamiento.' },
   { title: 'Evaluación', text: 'Identificamos el recuerdo diana, las creencias asociadas y las sensaciones que aún genera en tu cuerpo.' },
   { title: 'Desensibilización', text: 'A través de la estimulación bilateral, el recuerdo va perdiendo su carga emocional perturbadora.' },
-  { title: 'Instalación', text: 'Reforzamos una creencia positiva y más adaptativa sobre ti misma y sobre lo vivido.' },
+  { title: 'Instalación', text: 'Reforzamos una creencia positiva y más adaptativa sobre ti mismo/a y sobre lo vivido.' },
   { title: 'Examen corporal', text: 'Revisamos que el recuerdo ya no active tensión ni malestar físico residual.' },
   { title: 'Cierre', text: 'Cerramos cada sesión en un estado de calma y equilibrio, con recursos para los días siguientes.' },
   { title: 'Reevaluación', text: 'En la siguiente sesión verificamos los avances y damos continuidad al proceso.' },
@@ -31,7 +33,7 @@ const emdrHelps = [
   'Recuerdos intrusivos, flashbacks y pesadillas',
   'Duelos y pérdidas difíciles de elaborar',
   'Fobias y miedos desproporcionados',
-  'Vergüenza, culpa o creencias negativas persistentes sobre ti misma',
+  'Vergüenza, culpa o creencias negativas persistentes sobre ti mismo/a',
   'Bloqueos que no se han resuelto con otros procesos terapéuticos',
 ]
 

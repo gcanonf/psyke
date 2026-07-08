@@ -6,6 +6,8 @@ useSeo({
     'Bienestar organizacional en español | Programas de cuidado para equipos',
   description:
     'Programas de bienestar organizacional para empresas e instituciones hispanohablantes. Cuidado, autoliderazgo y resiliencia para equipos en Colombia y el mundo.',
+  keywords:
+    'bienestar organizacional en español, programas cuidado equipos hispanohablantes, salud mental organizaciones online',
 })
 
 const mailLink = `mailto:${contact.email}?subject=${encodeURIComponent(

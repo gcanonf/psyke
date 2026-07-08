@@ -2,9 +2,11 @@
 import { contact, therapies } from '~/data/site'
 useReveal()
 useSeo({
-  title: 'Psicoterapia online y presencial en Bogotá | PSYKE',
+  title: 'Psicoterapia online en español para hispanohablantes | PSYKE',
   description:
-    'Psicoterapia para adultos, adolescentes y niños, y psicoterapia grupal, con enfoque cognitivo-conductual. Atención cálida online y presencial en Bogotá, Colombia. Agenda tu primera sesión.',
+    'Psicoterapia online en español para adultos y adolescentes, con enfoque cognitivo-conductual y EMDR. Un espacio cálido y científicamente respaldado para hispanohablantes en cualquier parte del mundo.',
+  keywords:
+    'psicoterapia online en español, terapia cognitivo conductual online, terapia individual online hispanohablantes, psicóloga online adultos adolescentes',
 })
 
 const bookingLink = contact.booking
@@ -64,6 +66,19 @@ function onTrackScroll() {
         />
       </div>
       <img src="/logo-mark.svg" alt="" class="shader-hero__watermark" aria-hidden="true" />
+      <!-- Eva in her consulting room — fills the right half, edges blended
+           softly into the light background (no hard frame). -->
+      <div class="shader-hero__photo" aria-hidden="true">
+        <NuxtImg
+          src="/images/consulta-eva.jpg"
+          alt=""
+          width="1000"
+          height="580"
+          sizes="(max-width: 900px) 100vw, 640px"
+          loading="eager"
+          placeholder
+        />
+      </div>
       <div class="shader-hero__veil" aria-hidden="true" />
       <div class="container shader-hero__inner">
         <p class="shader-hero__eyebrow reveal">Psicoterapia</p>
@@ -226,6 +241,20 @@ function onTrackScroll() {
       </div>
     </section>
 
+    <!-- EMDR cross-link -->
+    <section class="section emdr-cta">
+      <div class="container emdr-cta__inner reveal">
+        <p class="eyebrow">Especialización en trauma</p>
+        <h2 class="h2">El trauma tiene un camino de sanación</h2>
+        <p class="emdr-cta__text">
+          Si cargas experiencias que dejaron huella, la terapia EMDR puede
+          ayudarte a reprocesarlas para que dejen de doler y de condicionar tu
+          presente.
+        </p>
+        <NuxtLink to="/emdr" class="btn btn--accent">Conoce la terapia EMDR</NuxtLink>
+      </div>
+    </section>
+
   </div>
 </template>
 
@@ -318,13 +347,41 @@ function onTrackScroll() {
   user-select: none;
   filter: saturate(0.6);
 }
-/* soft light veil so the title stays legible over the mesh gradient */
+/* Eva in her consulting room — fills the right half full-height, its left and
+   top edges dissolving into the light background (no visible frame). */
+.shader-hero__photo {
+  position: absolute;
+  z-index: 0;
+  inset: 0 0 0 auto;
+  width: min(56%, 48rem);
+  height: 100%;
+  pointer-events: none;
+}
+.shader-hero__photo :deep(img) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 58% 42%;
+  /* soft dissolve on the left, top and bottom; the right runs to the page edge */
+  -webkit-mask-image:
+    linear-gradient(to right, transparent 0%, rgba(0,0,0,0.3) 34%, #000 72%),
+    linear-gradient(to top, transparent 0%, #000 18%),
+    linear-gradient(to bottom, transparent 0%, #000 14%);
+  mask-image:
+    linear-gradient(to right, transparent 0%, rgba(0,0,0,0.3) 34%, #000 72%),
+    linear-gradient(to top, transparent 0%, #000 18%),
+    linear-gradient(to bottom, transparent 0%, #000 14%);
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+}
+/* soft light veil so the title stays legible over the mesh gradient + photo */
 .shader-hero__veil {
   position: absolute;
   inset: 0;
   z-index: 1;
+  pointer-events: none;
   background:
-    linear-gradient(to right, rgba(250, 247, 242, 0.82) 0%, rgba(250, 247, 242, 0.45) 45%, transparent 80%),
+    linear-gradient(to right, rgba(250, 247, 242, 0.9) 0%, rgba(250, 247, 242, 0.6) 42%, transparent 72%),
     linear-gradient(to top, rgba(250, 247, 242, 0.55) 0%, transparent 45%);
 }
 .shader-hero__inner { position: relative; z-index: 2; max-width: 44rem; padding-block: 8rem; }
@@ -356,8 +413,38 @@ function onTrackScroll() {
   .shader-hero__scroll svg { animation: none; }
 }
 
+/* On phones: text is top-aligned in the upper portion, the photo sits in the
+   bottom ~44% and fades upward — the two never overlap. */
+@media (max-width: 899px) {
+  .shader-hero { align-items: flex-start; }
+  .shader-hero__inner { padding-block: 6.5rem 0; }
+  .shader-hero__photo {
+    inset: auto 0 0 0;
+    width: 100%;
+    height: 46%;
+  }
+  .shader-hero__photo :deep(img) {
+    object-position: 60% 32%;
+    /* fade only starts near the very top of the photo band, so text above stays clean */
+    -webkit-mask-image: linear-gradient(to top, #000 62%, transparent 100%);
+    mask-image: linear-gradient(to top, #000 62%, transparent 100%);
+    -webkit-mask-composite: source-over;
+    mask-composite: add;
+  }
+  /* veil covers the whole upper area so any faint image edge stays behind text */
+  .shader-hero__veil {
+    background:
+      linear-gradient(to bottom, rgba(250,247,242,0.85) 0%, rgba(250,247,242,0.75) 48%, transparent 66%);
+  }
+}
+
 .h2 { font-size: var(--step-3); margin-bottom: 1rem; }
 .head--center { text-align: center; max-width: 40rem; margin: 0 auto clamp(2rem, 1.5rem + 2vw, 3rem); }
+
+/* ---- EMDR cross-link ---- */
+.emdr-cta { background: var(--color-surface-alt); }
+.emdr-cta__inner { max-width: 46rem; margin-inline: auto; text-align: center; }
+.emdr-cta__text { color: var(--color-ink-soft); margin: 0.75rem 0 1.75rem; }
 
 /* ---- Intro + featured quote ---- */
 .intro__inner { max-width: 46rem; margin-inline: auto; text-align: center; }

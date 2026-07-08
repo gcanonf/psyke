@@ -8,6 +8,8 @@ useSeo({
     'Psicóloga clínica y consultora en salud mental | EMDR · Trauma · Educación socioemocional',
   description:
     'Psicoterapia, EMDR y acompañamiento emocional online para hispanohablantes con Eva Margarita Cañón Falla. Un espacio seguro para comprender tus emociones, integrar tu historia y construir bienestar.',
+  keywords:
+    'psicóloga online en español, terapia psicológica hispanohablantes, salud mental online español, psicóloga clínica trauma EMDR',
 })
 
 const bookingLink = contact.booking
@@ -26,7 +28,7 @@ const sello = [
   {
     id: 2,
     keyword: 'Formación continua',
-    text: 'Dos maestrías y más de 15 años de actualización constante para ofrecerte un acompañamiento riguroso y al día.',
+    text: 'Dos maestrías y más de 20 años de actualización constante para ofrecerte un acompañamiento riguroso y al día.',
   },
   {
     id: 3,
@@ -72,8 +74,8 @@ const sello = [
         <div class="hero__media reveal" data-reveal-delay="200">
           <div class="hero__circle">
             <NuxtImg
-              src="/images/output-circle.jpg"
-              alt="Mujer con los brazos abiertos al atardecer frente al mar, símbolo de bienestar"
+              src="/images/eva-hero.jpg"
+              :alt="`${brand.professional}, psicóloga fundadora de PSYKE, al atardecer frente al mar`"
               width="900"
               height="900"
               sizes="(max-width: 900px) 80vw, 460px"
@@ -110,10 +112,13 @@ const sello = [
           <p class="eyebrow">Acerca de PSYKE</p>
           <h2 id="about-h" class="head__title">{{ brand.professional }}</h2>
           <p class="prose-p">
-            Soy psicóloga con más de 20 años de experiencia en programas
-            educativos y de salud mental. Mi trabajo integra el desarrollo
-            humano, los derechos y la política pública para ofrecerte un
-            acompañamiento integral y profundamente humano.
+            Soy Eva Margarita Cañón Falla, psicóloga con más de 20 años
+            acompañando a personas que han vivido experiencias difíciles y que en
+            algún momento decidieron que merecían algo mejor. Mi propósito es
+            ofrecerte un espacio seguro, cercano y científicamente respaldado
+            donde puedas comprender lo que estás viviendo, sanar lo que pesa y
+            construir una vida con más bienestar y libertad. Online para
+            hispanohablantes en cualquier parte del mundo. En tu idioma.
           </p>
           <blockquote class="about__quote">
             «En PSYKE, creo que cada persona y comunidad tiene el potencial de
@@ -231,20 +236,23 @@ const sello = [
 .hero__actions { margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 0.8rem; }
 
 .hero__media { position: relative; display: flex; justify-content: center; }
-/* Large circle whose edges fade softly into the page background */
+/* Clean circular crop (no edge blur — the photo has its own background that
+   would flicker against the animated shader). Framed with a soft ring. */
 .hero__circle {
   position: relative;
-  width: clamp(22rem, 42vw, 38rem);
+  width: clamp(20rem, 40vw, 34rem);
   aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  border: 6px solid var(--color-surface);
 }
 .hero__circle :deep(img) {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* larger box keeps the visible photo big; fade still completes (~62%) so a
-     transparent margin remains and no edge reaches the section bounds */
-  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 30%, rgba(0,0,0,0.55) 46%, rgba(0,0,0,0.18) 56%, transparent 64%);
-  mask-image: radial-gradient(circle at 50% 50%, #000 30%, rgba(0,0,0,0.55) 46%, rgba(0,0,0,0.18) 56%, transparent 64%);
+  /* center the crop on the face / upper body */
+  object-position: center 30%;
 }
 .hero__badge {
   position: absolute;

@@ -60,7 +60,7 @@ export const therapies: Therapy[] = [
     phrase: 'Sanando el ayer, liberamos el hoy',
     short:
       'Acompañamiento individual para quienes atraviesan ansiedad, estrés, duelos o crisis vitales, desde un enfoque cognitivo-conductual.',
-    full: 'La terapia para adultos es un espacio de acompañamiento individual para quienes atraviesan ansiedad, estrés, duelos, crisis vitales o dificultades en sus relaciones. Trabajamos desde un enfoque cognitivo-conductual, con herramientas prácticas para comprender lo que sientes, regular tus emociones y avanzar hacia tu bienestar y desarrollo personal, a tu propio ritmo.',
+    full: 'La terapia para adultos es un espacio de acompañamiento individual para quienes atraviesan ansiedad, estrés, duelos, crisis vitales o dificultades en sus relaciones.\n\nTambién para quienes un día hicieron las maletas y saben lo que significa construir una vida en otro lugar: la soledad que nadie ve, la nostalgia que cuesta nombrar, el esfuerzo de existir en otro idioma y en otra cultura.\n\nHay algo profundamente reparador en poder hablar de lo que te pasa en tu propio idioma, con alguien que te entiende, con tus referencias y tu manera de sentir. Sin tener que explicar de más. Sin perder matices. Sin traducirte.\n\nTrabajamos desde un enfoque cognitivo-conductual y EMDR, con herramientas prácticas para comprender lo que sientes, regular tus emociones y avanzar hacia tu bienestar, a tu propio ritmo.',
     image: '/images/therapies/adultos.jpg',
   },
   {
@@ -75,12 +75,12 @@ export const therapies: Therapy[] = [
   },
   {
     id: 'infantil',
-    title: 'Terapia infantil',
-    navLabel: 'Infantil',
-    phrase: 'Guiando a nuestros pequeños corazones',
+    title: 'Orientación a familias con niños y niñas',
+    navLabel: 'Familias con niños',
+    phrase: 'Acompañar el vínculo que sostiene',
     short:
-      'Un acompañamiento cálido y lúdico para que los más pequeños expresen lo que sienten y crezcan con seguridad.',
-    full: 'A través del juego y de actividades adaptadas a su edad, acompaño a los más pequeños a expresar lo que sienten, comprender y gestionar sus emociones y desarrollar habilidades sociales. Un espacio cálido y seguro que también orienta a madres, padres y cuidadores para fortalecer el bienestar de toda la familia.',
+      'Los niños y niñas expresan lo que viven de muchas maneras, pero no siempre resulta fácil comprender sus necesidades.',
+    full: 'En este espacio acompaño a madres, padres y cuidadores a comprender mejor las necesidades emocionales de sus hijos e hijas, fortalecer el vínculo familiar y desarrollar estrategias que favorezcan su bienestar y desarrollo.\n\nJuntos encontraremos herramientas para afrontar los desafíos de cada etapa con mayor confianza, calma y seguridad.',
     image: '/images/therapies/infantil.jpg',
   },
   {
